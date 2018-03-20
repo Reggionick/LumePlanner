@@ -16,6 +16,8 @@ import { HelpPage } from '../pages/help/help';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { LumeHttpProvider } from '../providers/lume-http/lume-http';
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'http://lume.morselli.unimore.it/DITA/files/lang/', '.json');
 }
@@ -55,7 +57,8 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    LumeHttpProvider
   ]
 })
 export class AppModule {}
