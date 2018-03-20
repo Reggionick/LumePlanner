@@ -9,6 +9,7 @@ import { MyTripsPage } from '../pages/my-trips/my-trips';
 import { TracksPage } from '../pages/tracks/tracks';
 import { UserPage } from '../pages/user/user';
 import { HelpPage } from '../pages/help/help';
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   templateUrl: 'app.html'
@@ -18,19 +19,26 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, translateKey: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    public  translate: TranslateService
+  ) {
     this.initializeApp();
+
+    translate.use('it');
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Mappa', component: MappaPage },
-      { title: 'MyTrips', component: MyTripsPage },
-      { title: 'Tracks', component: TracksPage },
-      { title: 'User', component: UserPage },
-      { title: 'Help', component: HelpPage }
+      { title: 'Home', translateKey: 'homepage', component: HomePage },
+      { title: 'Mappa', translateKey: 'my_places', component: MappaPage },
+      { title: 'MyTrips', translateKey: 'my_itineraries', component: MyTripsPage },
+      { title: 'Tracks', translateKey: 'itineraries', component: TracksPage },
+      { title: 'User', translateKey: 'user', component: UserPage },
+      { title: 'resting', translateKey: 'help', component: HelpPage }
     ];
 
   }
