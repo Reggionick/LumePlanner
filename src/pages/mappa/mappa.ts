@@ -4,10 +4,8 @@ import {
   GoogleMaps,
   GoogleMap,
   GoogleMapsEvent,
-  Marker,
-  GoogleMapsAnimation,
   MyLocation,
-  BaseArrayClass
+  MarkerClusterOptions
 } from '@ionic-native/google-maps';
 import { LumeHttpProvider } from "../../providers/lume-http/lume-http";
 
@@ -80,10 +78,12 @@ export class MappaPage {
           });
         }
 
-        var baseArrayClass = new BaseArrayClass(data);
-        baseArrayClass.mapAsync((element, callback) => {
-          this.map.addMarker(element).then(value2 => {});
-        });
+        var markerClusterOptions: MarkerClusterOptions = {
+          icons: [{min: 2, max: 100}, {min: 100, max: 200}, {min: 200, max: 500}, {min: 500, max: 1000}, {min: 1000, max: 2000}, {min: 2000}],
+          markers: data
+        };
+
+        this.map.addMarkerCluster(markerClusterOptions);
       }, error => {
         console.error(error);
       })
