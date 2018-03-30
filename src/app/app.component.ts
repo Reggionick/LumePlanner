@@ -28,6 +28,7 @@ export class MyApp {
     public  translate: TranslateService
   ) {
     this.initializeApp();
+    this.initializeUser();
 
     translate.use('it');
 
@@ -50,6 +51,11 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  initializeUser() {
+    let user = ("" + Math.random()).substring(2);
+    window.localStorage.setItem("user", user);
   }
 
   openPage(page) {
