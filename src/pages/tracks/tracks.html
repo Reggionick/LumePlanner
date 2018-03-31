@@ -16,6 +16,12 @@
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let itinerary of itineraries" (click)="onItineraryClicked(itinerary)" >
+      <ion-img [width]="40" [height]="40" src="{{'http://lume.morselli.unimore.it/DITA/WS/itineraries/' + itinerary.img}}"></ion-img>
+      <ion-label>{{itinerary.display_name}}</ion-label>
+      <ion-note item-end>{{itinerary.approx_time}}</ion-note>
+    </ion-item>
+  </ion-list>
 </ion-content>

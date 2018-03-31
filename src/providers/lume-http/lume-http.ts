@@ -20,6 +20,11 @@ export class LumeHttpProvider {
     return this.http.get(this.ditaServer + "activities?city=" + city + "&user=" + this.user);
   }
 
+  getItineraries(city: any, position: {lat: number, lng: number}) {
+    const reqParams = "city=" + city + "&user=" + this.user + "&lat=" + position.lat + "&lng=" + position.lng;
+    return this.http.get(this.ditaServer + "itineraries?" + reqParams);
+  }
+
   postPreferences(preferences: any) {
     const jsonObj = {
       user: this.user,
