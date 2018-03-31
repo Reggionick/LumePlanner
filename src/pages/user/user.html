@@ -16,6 +16,78 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-list>
+    <ion-list-header>{{ 'resting' | translate }}</ion-list-header>
+    <ion-item>
+      <ion-range min="0" max="100" [(ngModel)]="restingSliderValue" color="secondary">
+        <ion-label range-left>-</ion-label>
+        <ion-label range-right>+</ion-label>
+      </ion-range>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>{{ 'attractions' | translate }}</ion-list-header>
+    <ion-item>
+      <ion-range min="0" max="100" [(ngModel)]="attractionsSliderValue" color="secondary">
+        <ion-label range-left>-</ion-label>
+        <ion-label range-right>+</ion-label>
+      </ion-range>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>{{ 'tree' | translate }}</ion-list-header>
+    <ion-item>
+      <ion-range min="0" max="100" [(ngModel)]="treeSliderValue" color="secondary">
+        <ion-label range-left>-</ion-label>
+        <ion-label range-right>+</ion-label>
+      </ion-range>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>{{ 'lifestyle' | translate }}</ion-list-header>
+    <ion-item>
+      <ion-range min="0" max="100" [(ngModel)]="lifestyleSliderValue" color="secondary">
+        <ion-label range-left>-</ion-label>
+        <ion-label range-right>+</ion-label>
+      </ion-range>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>{{ 'eating' | translate }}</ion-list-header>
+    <ion-item>
+      <ion-range min="0" max="100" [(ngModel)]="eatingSliderValue" color="secondary">
+        <ion-label range-left>-</ion-label>
+        <ion-label range-right>+</ion-label>
+      </ion-range>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>{{ 'parks' | translate }}</ion-list-header>
+    <ion-item>
+      <ion-range min="0" max="100" [(ngModel)]="parksSliderValue" color="secondary">
+        <ion-label range-left>-</ion-label>
+        <ion-label range-right>+</ion-label>
+      </ion-range>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-row>
+        <ion-col>
+          <button ion-button color="secondary">Indietro</button><!--TODO: translate -->
+        </ion-col>
+        <ion-col>
+          <button ion-button (click)="onSavePressed()">Salva preferenze</button><!--TODO: translate -->
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

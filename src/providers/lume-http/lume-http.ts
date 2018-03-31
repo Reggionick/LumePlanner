@@ -19,4 +19,12 @@ export class LumeHttpProvider {
   getActivities(city: string) {
     return this.http.get(this.ditaServer + "activities?city=" + city + "&user=" + this.user);
   }
+
+  postPreferences(preferences: any) {
+    const jsonObj = {
+      user: this.user,
+      prefs: preferences
+    };
+    return this.http.post(this.ditaServer + "updatepref", jsonObj);
+  }
 }
