@@ -10,7 +10,7 @@
 <ion-content>
   <ion-searchbar (ionInput)="getFilteredCities($event)"></ion-searchbar>
   <ion-list>
-    <ion-item *ngFor="let city of cities">
+    <ion-item *ngFor="let city of cities" (click)="onCityClick(city)">
       {{ city.pretty_name }}
     </ion-item>
   </ion-list>

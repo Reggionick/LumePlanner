@@ -17,6 +17,7 @@ export class MappaPage {
 
   mapReady: boolean = false;
   map: GoogleMap;
+  userLocation: MyLocation;
 
   constructor(
     public navCtrl: NavController,
@@ -38,33 +39,36 @@ export class MappaPage {
           lng: 10.667276,
           lat: 44.687561
         },
-        zoom: 15
+        zoom: 8
       }
     });
 
     // Wait the maps plugin is ready until the MAP_READY event
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
       this.mapReady = true;
-      this.showUserLocation();
+      this.getUserLocation();
       this.mapReadyHandler();
     });
   }
 
-  showUserLocation() {
+  getUserLocation() {
     this.map.getMyLocation().then((location: MyLocation) => {
-      return this.map.animateCamera({
-        target: location.latLng,
-        zoom: 15
-      });
+      this.userLocation = location;
     });
   }
 
   mapReadyHandler() {
-    console.log("mapReadyHandler");
-    var city = window.localStorage.getItem('city');
-    if (city || true) {
-      city = "Reggio_nell'Emilia";
-      this.lumeHttp.getActivities(city).subscribe((value: Array<any>) => {
+    var city = JSON.parse(window.localStorage.getItem('city'));
+    if (city) {
+      this.map.animateCamera({
+        target: {
+          lng: (city.lonLatBBox[0]+city.lonLatBBox[2])/2,
+          lat: (city.lonLatBBox[1]+city.lonLatBBox[3])/2
+        },
+        zoom: 13
+      });
+
+      this.lumeHttp.getActivities(city.name).subscribe((value: Array<any>) => {
 
         var data = [];
 
