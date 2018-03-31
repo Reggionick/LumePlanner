@@ -16,6 +16,18 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-textarea placeholder="Enter a description" [(ngModel)]="helpText"></ion-textarea><!--TODO: translate -->
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button block (click)="onInviaPressed()">Invia segnalazione!</button><!--TODO: translate -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

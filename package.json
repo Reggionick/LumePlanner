@@ -23,6 +23,7 @@
     "@angular/platform-browser": "5.2.9",
     "@angular/platform-browser-dynamic": "5.2.9",
     "@ionic-native/core": "^4.5.3",
+    "@ionic-native/email-composer": "^4.6.0",
     "@ionic-native/google-maps": "^4.5.3",
     "@ionic-native/splash-screen": "4.5.3",
     "@ionic-native/status-bar": "4.5.3",
@@ -31,6 +32,7 @@
     "@ngx-translate/http-loader": "^2.0.1",
     "cordova-ios": "4.5.4",
     "cordova-plugin-device": "^2.0.1",
+    "cordova-plugin-email-composer": "^0.8.15",
     "cordova-plugin-googlemaps": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git",
     "cordova-plugin-googlemaps-sdk": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git#2.6.0",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
@@ -62,7 +64,8 @@
         "API_KEY_FOR_IOS": "AIzaSyBUSiDa-ILNpcgJJGGw3xvop6xKfrPmAnw",
         "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
         "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background."
-      }
+      },
+      "cordova-plugin-email-composer": {}
     },
     "platforms": [
       "ios"

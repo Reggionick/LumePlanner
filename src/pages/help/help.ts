@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the HelpPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { EmailComposer } from "@ionic-native/email-composer";
 
 @Component({
   selector: 'page-help',
@@ -14,11 +8,37 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class HelpPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  helpText: string = "";
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public emailComposer: EmailComposer
+  ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HelpPage');
+
+    this.emailComposer.isAvailable().then((available: boolean) =>{
+      if (available) {
+
+      }
+    });
+
+  }
+
+  onInviaPressed() {
+    const user = window.localStorage.getItem("user");
+
+    let email = {
+      to: 'marco.mamei@gmail.com',
+      subject: 'Lume help request',
+      body: this.helpText + "<br/><br/> from: "+ user,
+      isHtml: true
+    };
+
+    this.emailComposer.open(email);
   }
 
 }
