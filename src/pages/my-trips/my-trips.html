@@ -16,6 +16,18 @@
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+  <div id="my-trips-map"></div>
+  <div id="my-trips-results">
+    <div *ngFor="let itinerary of itinerariesVisits">
+      <span (click)="onItineraryClick(itinerary.name)">{{itinerary.name}}</span>
+      <div *ngFor="let visit of itinerary.visits">
+        <div class="itineraryPlace" (click)="onItineraryPlaceClick(visit)">
+          <div *ngIf="visit.visited; then thenBlock else elseBlock"></div>
+          <ng-template #thenBlock><ion-icon name="checkmark-circle"></ion-icon></ng-template>
+          <ng-template #elseBlock><ion-icon name="close-circle"></ion-icon></ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>

@@ -25,6 +25,10 @@ export class LumeHttpProvider {
     return this.http.get(this.ditaServer + "itineraries?" + reqParams);
   }
 
+  getCheckuser() {
+    return this.http.get(this.ditaServer + "checkuser?userid=27631344012962633"/*this.user*/);
+  }
+
   postPreferences(preferences: any) {
     const jsonObj = {
       user: this.user,
