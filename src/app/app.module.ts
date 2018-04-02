@@ -12,6 +12,7 @@ import { MyTripsPage } from '../pages/my-trips/my-trips';
 import { TracksPage } from '../pages/tracks/tracks';
 import { UserPage } from '../pages/user/user';
 import { HelpPage } from '../pages/help/help';
+import { CreateTrackPage } from "../pages/create-track/create-track";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -31,7 +32,8 @@ export function createTranslateLoader(http: HttpClient) {
     MyTripsPage,
     TracksPage,
     UserPage,
-    HelpPage
+    HelpPage,
+    CreateTrackPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ export function createTranslateLoader(http: HttpClient) {
     MyTripsPage,
     TracksPage,
     UserPage,
-    HelpPage
+    HelpPage,
+    CreateTrackPage
   ],
   providers: [
     StatusBar,

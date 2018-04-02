@@ -23,5 +23,6 @@
       <ion-label>{{itinerary.display_name}}</ion-label>
       <ion-note item-end>{{itinerary.approx_time}}</ion-note>
     </ion-item>
+    <button ion-button block (click)="onCreateClicked()">{{ 'create_itinerary' | translate}}</button>
   </ion-list>
 </ion-content>

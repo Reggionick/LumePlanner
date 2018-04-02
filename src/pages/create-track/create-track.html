@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>CreateTrack</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Data</ion-label>
+      <ion-datetime displayFormat="D MMM YYYY" [(ngModel)]="dataInizio"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ora</ion-label>
+      <ion-datetime displayFormat="HH:mm" [(ngModel)]="oraInizio"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Partenza</ion-label>
+      <ion-select [(ngModel)]="luogoPartenza" okText="Seleziona" cancelText="Annulla">
+        <ion-option *ngFor="let luogo of luoghi" value="{{luogo}}">{{luogo}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Arrivo</ion-label>
+      <ion-select [(ngModel)]="luogoArrivo" okText="Seleziona" cancelText="Annulla">
+        <ion-option *ngFor="let luogo of luoghi" value="{{luogo}}">{{luogo}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <button ion-button block (click)="onCreateClicked()">Vai all'itinerario</button><!--TODO: translate -->
+  </ion-list>
+</ion-content>

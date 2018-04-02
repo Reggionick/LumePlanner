@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { LumeHttpProvider } from "../../providers/lume-http/lume-http";
 
+import { CreateTrackPage } from "../create-track/create-track";
+
 @Component({
   selector: 'page-tracks',
   templateUrl: 'tracks.html',
@@ -37,4 +39,7 @@ export class TracksPage {
     console.log(JSON.stringify(itinerary));
   }
 
+  onCreateClicked() {
+    this.navCtrl.push(CreateTrackPage);
+  }
 }
