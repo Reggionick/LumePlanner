@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
-    "cleandeep": "rm -Rf .sourcemaps; rm -Rf node_modules; rm -Rf node_modules; rm -Rf platforms; rm -Rf plugin; rm -Rf plugins; rm -Rf www;",
+    "cleandeep": "rm -rf www/ .sourcemaps/ node_modules/ platforms/ plugins/",
+    "cleanlight": "rm -rf www/ .sourcemaps/ platforms/",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
