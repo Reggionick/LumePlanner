@@ -17,6 +17,7 @@ import { CreateTrackPage } from "../pages/create-track/create-track";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
 
 import { LumeHttpProvider } from '../providers/lume-http/lume-http';
 
@@ -62,6 +63,7 @@ export function createTranslateLoader(http: HttpClient) {
     StatusBar,
     SplashScreen,
     EmailComposer,
+    BackgroundGeolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LumeHttpProvider
   ]
