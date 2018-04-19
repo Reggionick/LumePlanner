@@ -11,9 +11,10 @@
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve",
-    "cordovarunios": "ionic cordova run ios -cl",
-    "cordovarunandroid": "ionic cordova run android"
+    "ionic:serve:l": "ionic-app-scripts serve -l",
+    "cordovarunios": "ionic cordova run ios",
+    "cordovarunandroid": "ionic cordova run android",
+    "cordovarunbrowser": "ionic cordova run browser"
   },
   "dependencies": {
     "@angular/animations": "5.2.9",
@@ -34,6 +35,7 @@
     "@ngx-translate/core": "^9.1.1",
     "@ngx-translate/http-loader": "^2.0.1",
     "cordova-android": "7.0.0",
+    "cordova-browser": "5.0.3",
     "cordova-ios": "4.5.4",
     "cordova-plugin-device": "^2.0.1",
     "cordova-plugin-email-composer": "^0.8.15",
@@ -75,7 +77,8 @@
     },
     "platforms": [
       "ios",
-      "android"
+      "android",
+      "browser"
     ]
   }
 }
