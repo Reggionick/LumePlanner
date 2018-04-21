@@ -90,7 +90,7 @@ export class MyTripsPage {
 
         let baseArrayClass = new BaseArrayClass(markers);
         baseArrayClass.mapAsync((element) => {
-          this.map.addMarker(element);
+          // this.map.addMarker(element);
         });
 
         this.itinerariesVisits = [];
