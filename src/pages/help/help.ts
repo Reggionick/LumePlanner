@@ -20,12 +20,10 @@ export class HelpPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad HelpPage');
 
-    this.emailComposer.isAvailable().then((available: boolean) =>{
-      if (available) {
-
-      }
-    });
-
+    if ( document.URL.indexOf( 'http' ) === -1 ) {
+      this.emailComposer.isAvailable().then((available: boolean) =>{});
+    }
+    
   }
 
   onInviaPressed() {
