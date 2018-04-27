@@ -7,87 +7,39 @@
 <ion-header>
 
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
     <ion-title>{{ 'user' | translate }}</ion-title>
+
+    <ion-buttons end>
+      <button (click)="onSavePressed()" ion-button icon-only>
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content>
-  <ion-list>
-    <ion-list-header>{{ 'resting' | translate }}</ion-list-header>
-    <ion-item>
-      <ion-range min="0" max="100" [(ngModel)]="restingSliderValue" color="secondary">
-        <ion-label range-left>-</ion-label>
-        <ion-label range-right>+</ion-label>
-      </ion-range>
-    </ion-item>
-  </ion-list>
+<ion-content padding>
+  <ion-label>Preferenze:</ion-label><!--TODO: translate-->
 
-  <ion-list>
-    <ion-list-header>{{ 'attractions' | translate }}</ion-list-header>
-    <ion-item>
-      <ion-range min="0" max="100" [(ngModel)]="attractionsSliderValue" color="secondary">
-        <ion-label range-left>-</ion-label>
-        <ion-label range-right>+</ion-label>
-      </ion-range>
-    </ion-item>
-  </ion-list>
-
-  <ion-list>
-    <ion-list-header>{{ 'tree' | translate }}</ion-list-header>
-    <ion-item>
-      <ion-range min="0" max="100" [(ngModel)]="treeSliderValue" color="secondary">
-        <ion-label range-left>-</ion-label>
-        <ion-label range-right>+</ion-label>
-      </ion-range>
-    </ion-item>
-  </ion-list>
-
-  <ion-list>
-    <ion-list-header>{{ 'lifestyle' | translate }}</ion-list-header>
-    <ion-item>
-      <ion-range min="0" max="100" [(ngModel)]="lifestyleSliderValue" color="secondary">
-        <ion-label range-left>-</ion-label>
-        <ion-label range-right>+</ion-label>
-      </ion-range>
-    </ion-item>
-  </ion-list>
-
-  <ion-list>
-    <ion-list-header>{{ 'eating' | translate }}</ion-list-header>
-    <ion-item>
-      <ion-range min="0" max="100" [(ngModel)]="eatingSliderValue" color="secondary">
-        <ion-label range-left>-</ion-label>
-        <ion-label range-right>+</ion-label>
-      </ion-range>
-    </ion-item>
-  </ion-list>
-
-  <ion-list>
-    <ion-list-header>{{ 'parks' | translate }}</ion-list-header>
-    <ion-item>
-      <ion-range min="0" max="100" [(ngModel)]="parksSliderValue" color="secondary">
-        <ion-label range-left>-</ion-label>
-        <ion-label range-right>+</ion-label>
-      </ion-range>
-    </ion-item>
-  </ion-list>
-
-  <ion-list>
-    <ion-item>
-      <ion-row>
-        <ion-col>
-          <button ion-button color="secondary">Indietro</button><!--TODO: translate -->
-        </ion-col>
-        <ion-col>
-          <button ion-button (click)="onSavePressed()">Salva preferenze</button><!--TODO: translate -->
-        </ion-col>
-      </ion-row>
-    </ion-item>
-  </ion-list>
+  <ion-grid>
+    <ion-row *ngFor="let pref of prefParams; let prefIndex = index;">
+      <ion-col col-auto align-self-start>
+        <ion-img class="icon" src="{{ pref.icon }}"></ion-img>
+        <ion-label>{{ pref.label | translate }}</ion-label>
+        <div></div>
+      </ion-col>
+      <ion-col align-self-end>
+        <div class="pallino {{pref.label}}" *ngFor="let i of [4,3,2,1,0]" (click)="pressedPallino(prefIndex, i)" [ngClass]="{'filled': i <= pref.value }"></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

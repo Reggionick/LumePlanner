@@ -1,3 +1,52 @@
 page-user {
 
+  ion-grid {
+    border-radius: 5px;
+    background-color: #ffffff;
+    border: solid 1.5px #000000;
+  }
+
+  ion-col > * {
+    float: left;
+  }
+
+  ion-img.icon {
+    width: 23.5px;
+    height: 34px;
+  }
+
+  div.pallino {
+    float: right;
+    width: 25px;
+    height: 25px;
+    background-color: #ffffff;
+    border: solid 1.5px #000000;
+    border-radius: 25px;
+    margin: 0 3px;
+  }
+
+  div.pallino.parks.filled {
+    background-color: $parksFilling;
+  }
+
+  div.pallino.resting.filled {
+    background-color: $restingFilling;
+  }
+
+  div.pallino.tree.filled {
+    background-color: $treeFilling;
+  }
+
+  div.pallino.attractions.filled {
+    background-color: $attractionsFilling;
+  }
+
+  div.pallino.eating.filled {
+    background-color: $eatingFilling;
+  }
+
+  div.pallino.lifestyle.filled {
+    background-color: $lifestyleFilling;
+  }
+
 }

@@ -9,45 +9,67 @@ import { LumeHttpProvider } from "../../providers/lume-http/lume-http";
 })
 export class UserPage {
 
-  restingSliderValue: number = 0;
-  attractionsSliderValue: number = 0;
-  treeSliderValue: number = 0;
-  lifestyleSliderValue: number = 0;
-  eatingSliderValue: number = 0;
-  parksSliderValue: number = 0;
-
-  prefParams = {
-    resting: 0,
-    attractions: 0,
-    tree: 0,
-    lifestyle: 0,
-    eating: 0,
-    parks: 0
-  };
+  prefParams = [
+    {
+      label: "resting",
+      icon: "../../assets/imgs/resting-pin-b.svg",
+      value: 0
+    },
+    {
+      label: "attractions",
+      icon: "../../assets/imgs/actraction-b.svg",
+      value: 0
+    },
+    {
+      label: "tree",
+      icon: "../../assets/imgs/tree-pin-b.svg",
+      value: 0
+    },
+    {
+      label: "lifestyle",
+      icon: "../../assets/imgs/lifestile-pin-b.svg",
+      value: 0
+    },
+    {
+      label: "eating",
+      icon: "../../assets/imgs/eating-pin-b.svg",
+      value: 0
+    },
+    {
+      label: "parks",
+      icon: "../../assets/imgs/park-pin.svg",
+      value: 0
+    }
+  ];
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public lumeHttp: LumeHttpProvider
-    ) {
+  ) {
   }
 
   ionViewDidLoad() {
   }
 
+  pressedPallino (prefIndex, index) {
+    this.prefParams[prefIndex].value = index;
+  }
+
   onSavePressed() {
 
-    const valuesSum = this.restingSliderValue + this.attractionsSliderValue + this.treeSliderValue + this.lifestyleSliderValue + this.eatingSliderValue + this.parksSliderValue;
+    let valuesSum = 0;
+    for (var pref of this.prefParams) {
+      valuesSum += pref.value;
+    }
 
-    this.prefParams.resting = this.restingSliderValue / valuesSum * 100 | 0;
-    this.prefParams.attractions = this.attractionsSliderValue / valuesSum * 100 | 0;
-    this.prefParams.tree = this.treeSliderValue / valuesSum * 100 | 0;
-    this.prefParams.lifestyle = this.lifestyleSliderValue / valuesSum * 100 | 0;
-    this.prefParams.eating = this.eatingSliderValue / valuesSum * 100 | 0;
-    this.prefParams.parks = this.parksSliderValue / valuesSum * 100 | 0;
+    let scaledPrefValues = {};
+    for (var pref of this.prefParams) {
+      scaledPrefValues[pref.label] = pref.value / valuesSum * 100 | 0;
+    }
 
-    this.lumeHttp.postPreferences(this.prefParams).subscribe(value => {
+    this.lumeHttp.postPreferences(scaledPrefValues).subscribe(value => {
       window.sessionStorage.setItem("preferences",JSON.stringify(value));
 
       let alert = this.alertCtrl.create({
