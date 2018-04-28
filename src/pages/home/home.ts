@@ -27,7 +27,7 @@ export class HomePage {
   }
 
   initializeItems() {
-    this.cities = this.allCities.slice(0,3);
+    this.cities = this.allCities;
   }
 
   getFilteredCities (ev: any) {
@@ -35,7 +35,7 @@ export class HomePage {
     let val = ev.target.value;
 
     if (typeof val == 'undefined' || val.trim() == '') {
-      this.cities = this.allCities.slice(0,3);
+      this.cities = this.allCities;
     } else {
       this.cities = this.allCities.filter((city) => {
         if (city.pretty_name) {

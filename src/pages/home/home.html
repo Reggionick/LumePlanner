@@ -10,10 +10,24 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar (ionInput)="getFilteredCities($event)"></ion-searchbar>
-  <ion-list>
-    <ion-item *ngFor="let city of cities" (click)="onCityClick(city)">
-      {{ city.pretty_name }}
-    </ion-item>
-  </ion-list>
+  <ion-grid>
+    <ion-row class="searchBar">
+      <ion-col>
+        <ion-searchbar (ionInput)="getFilteredCities($event)"></ion-searchbar>
+      </ion-col>
+    </ion-row>
+    <ion-row class="label">
+      <ion-label class="subtitle">Esplora altre città:</ion-label>
+    </ion-row>
+    <ion-row class="scroll">
+      <ion-scroll scrollY="true">
+        <ul>
+          <li *ngFor="let city of cities" (click)="onCityClick(city)">
+            <img src="http://lume.morselli.unimore.it/DITA/img/cities/{{city.imgFile}}"/>
+            <div class="labelBox">{{ city.pretty_name }}</div>
+          </li>
+        </ul>
+      </ion-scroll>
+    </ion-row>
+  </ion-grid>
 </ion-content>
