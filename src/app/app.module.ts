@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CityPage } from "../pages/city/city";
 import { MappaPage } from '../pages/mappa/mappa';
+import { ActivitiesPage } from "../pages/activities/activities";
 import { MyTripsPage } from '../pages/my-trips/my-trips';
 import { TracksPage } from '../pages/tracks/tracks';
 import { UserPage } from '../pages/user/user';
@@ -32,6 +33,7 @@ export function createTranslateLoader(http: HttpClient) {
     HomePage,
     CityPage,
     MappaPage,
+    ActivitiesPage,
     MyTripsPage,
     TracksPage,
     UserPage,
@@ -56,6 +58,7 @@ export function createTranslateLoader(http: HttpClient) {
     HomePage,
     CityPage,
     MappaPage,
+    ActivitiesPage,
     MyTripsPage,
     TracksPage,
     UserPage,

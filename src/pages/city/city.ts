@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import {MappaPage} from "../mappa/mappa";
+import {ActivitiesPage} from "../activities/activities";
 
 @Component({
   selector: 'page-city',
@@ -39,10 +40,10 @@ export class CityPage {
       case "eating":
       case "fashion":
       case "artigianato":
-        // this.navCtrl.push(MappaPage, {
-        //   city: this.city,
-        //   filter: el
-        // });
+        this.navCtrl.push(ActivitiesPage, {
+          city: this.city,
+          filter: el
+        });
         break;
     }
   }

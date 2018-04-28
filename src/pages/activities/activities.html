@@ -1,0 +1,35 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{filter}}</ion-title><!--TODO: translate-->
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-grid class="mainGrid">
+    <ion-row class="city">
+      <ion-col>
+        <div class="cityBox">
+          <img src="http://lume.morselli.unimore.it/DITA/img/cities/{{city.imgFile}}"/>
+          <div class="labelBox">{{ city.pretty_name }}</div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="menu">
+      <ion-col>
+        <ion-scroll scrollY="true">
+            <ul>
+              <li *ngFor="let activity of activities" (click)="onActivityClick(activity)">
+                <img src="{{activity.photo_url}}"/>
+                <div class="title">{{ activity.display_name }}</div>
+                <div class="category">{{ activity.category | translate }}</div>
+              </li>
+            </ul>
+        </ion-scroll>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
