@@ -7,6 +7,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { CityPage } from "../pages/city/city";
 import { MappaPage } from '../pages/mappa/mappa';
 import { MyTripsPage } from '../pages/my-trips/my-trips';
 import { TracksPage } from '../pages/tracks/tracks';
@@ -29,6 +30,7 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     MyApp,
     HomePage,
+    CityPage,
     MappaPage,
     MyTripsPage,
     TracksPage,
@@ -52,6 +54,7 @@ export function createTranslateLoader(http: HttpClient) {
   entryComponents: [
     MyApp,
     HomePage,
+    CityPage,
     MappaPage,
     MyTripsPage,
     TracksPage,

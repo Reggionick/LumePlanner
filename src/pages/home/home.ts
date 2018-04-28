@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 
 import { LumeHttpProvider } from "../../providers/lume-http/lume-http";
 
-import { MappaPage } from "../mappa/mappa";
+import { CityPage } from "../city/city";
 
 @Component({
   selector: 'page-home',
@@ -49,6 +49,6 @@ export class HomePage {
 
   onCityClick(selectedCity: any) {
     window.localStorage.setItem("city", JSON.stringify(selectedCity));
-    this.navCtrl.push(MappaPage);
+    this.navCtrl.push(CityPage, selectedCity);
   }
 }
