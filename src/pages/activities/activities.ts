@@ -36,7 +36,11 @@ export class ActivitiesPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ActivitiesPage');
+
+  }
+
+  filterActivityName (activityDisplayName): string {
+    return activityDisplayName.split(",", 2)[0];
   }
 
 }

@@ -23,8 +23,10 @@
         <ion-scroll scrollY="true">
             <ul>
               <li *ngFor="let activity of activities" (click)="onActivityClick(activity)">
-                <img src="{{activity.photo_url}}"/>
-                <div class="title">{{ activity.display_name }}</div>
+                <div class="image">
+                  <img src="{{activity.photo_url}}"/>
+                </div>
+                <div class="title">{{ filterActivityName(activity.display_name) }}</div>
                 <div class="category">{{ activity.category | translate }}</div>
               </li>
             </ul>

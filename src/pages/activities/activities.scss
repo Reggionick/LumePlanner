@@ -63,11 +63,16 @@ page-activities {
     background-color: #ffffff;
   }
 
-  li img {
+  li div.image {
     position: absolute;
     max-width: 20%;
     height: 100%;
     border-radius: 5px 0 0 5px;
+  }
+
+  li img {
+    max-width: 100%;
+    max-height: 100%;
   }
 
   li div.title {
