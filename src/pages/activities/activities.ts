@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import {LumeHttpProvider} from "../../providers/lume-http/lume-http";
 
+import {ActivityPage} from "../activity/activity";
+
 @Component({
   selector: 'page-activities',
   templateUrl: 'activities.html',
@@ -43,4 +45,8 @@ export class ActivitiesPage {
     return activityDisplayName.split(",", 2)[0];
   }
 
+  onActivityClick(activity: any) {
+    this.navCtrl.push(ActivityPage, activity)
+  }
+  
 }

@@ -1,0 +1,31 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ activityName }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-grid class="mainGrid">
+    <ion-row class="city">
+      <ion-col>
+        <img src="{{activity.photo_url}}"/>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div>{{ activity.category | translate }}</div>
+        <!--<div><a href="{{activity.www}}">Website</a></div>-->
+        <div>{{activity.description}}</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div>Mappa</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

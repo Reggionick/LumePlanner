@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { CityPage } from "../pages/city/city";
 import { MappaPage } from '../pages/mappa/mappa';
 import { ActivitiesPage } from "../pages/activities/activities";
+import { ActivityPage } from "../pages/activity/activity";
 import { MyTripsPage } from '../pages/my-trips/my-trips';
 import { TracksPage } from '../pages/tracks/tracks';
 import { UserPage } from '../pages/user/user';
@@ -34,6 +35,7 @@ export function createTranslateLoader(http: HttpClient) {
     CityPage,
     MappaPage,
     ActivitiesPage,
+    ActivityPage,
     MyTripsPage,
     TracksPage,
     UserPage,
@@ -59,6 +61,7 @@ export function createTranslateLoader(http: HttpClient) {
     CityPage,
     MappaPage,
     ActivitiesPage,
+    ActivityPage,
     MyTripsPage,
     TracksPage,
     UserPage,
