@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import {MappaPage} from "../mappa/mappa";
+import {ItinerariesPage} from "../itineraries/itineraries";
 import {ActivitiesPage} from "../activities/activities";
 
 @Component({
@@ -30,8 +31,11 @@ export class CityPage {
         this.navCtrl.push(MappaPage, this.city);
         break;
 
-      case "cosedavedere":
       case "itinerari":
+        this.navCtrl.push(ItinerariesPage, this.city);
+        break;
+
+      case "cosedavedere":
       case "preferiti":
       case "itinerariaccessibili":
       case "ciclabili":

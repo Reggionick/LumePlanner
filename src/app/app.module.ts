@@ -11,8 +11,8 @@ import { CityPage } from "../pages/city/city";
 import { MappaPage } from '../pages/mappa/mappa';
 import { ActivitiesPage } from "../pages/activities/activities";
 import { ActivityPage } from "../pages/activity/activity";
+import { ItinerariesPage } from "../pages/itineraries/itineraries";
 import { MyTripsPage } from '../pages/my-trips/my-trips';
-import { TracksPage } from '../pages/tracks/tracks';
 import { UserPage } from '../pages/user/user';
 import { HelpPage } from '../pages/help/help';
 import { CreateTrackPage } from "../pages/create-track/create-track";
@@ -36,8 +36,8 @@ export function createTranslateLoader(http: HttpClient) {
     MappaPage,
     ActivitiesPage,
     ActivityPage,
+    ItinerariesPage,
     MyTripsPage,
-    TracksPage,
     UserPage,
     HelpPage,
     CreateTrackPage
@@ -62,8 +62,8 @@ export function createTranslateLoader(http: HttpClient) {
     MappaPage,
     ActivitiesPage,
     ActivityPage,
+    ItinerariesPage,
     MyTripsPage,
-    TracksPage,
     UserPage,
     HelpPage,
     CreateTrackPage

@@ -21,7 +21,11 @@ export class LumeHttpProvider {
   }
 
   getItineraries(city: any, position: {lat: number, lng: number}) {
-    const reqParams = "city=" + city + "&user=" + this.user + "&lat=" + position.lat + "&lng=" + position.lng;
+    let reqParams = "city=" + city + "&user=" + this.user
+    if (position) {
+      reqParams += "&lat=" + position.lat + "&lng=" + position.lng;
+    }
+
     return this.http.get(this.ditaServer + "itineraries?" + reqParams);
   }
 
