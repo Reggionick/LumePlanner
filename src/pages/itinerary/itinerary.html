@@ -1,0 +1,19 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ itinerary.display_name.split(",")[0] }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div id="map_canvas">
+  </div>
+  <div id="detail" *ngIf="plan">
+    <div class="buttonsBox">
+      <div class="vai" (click)="vaiPressed()">Vai</div>
+    </div>
+  </div>
+</ion-content>

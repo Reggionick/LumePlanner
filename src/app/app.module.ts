@@ -12,6 +12,7 @@ import { MappaPage } from '../pages/mappa/mappa';
 import { ActivitiesPage } from "../pages/activities/activities";
 import { ActivityPage } from "../pages/activity/activity";
 import { ItinerariesPage } from "../pages/itineraries/itineraries";
+import { ItineraryPage } from "../pages/itinerary/itinerary";
 import { MyTripsPage } from '../pages/my-trips/my-trips';
 import { UserPage } from '../pages/user/user';
 import { HelpPage } from '../pages/help/help';
@@ -37,6 +38,7 @@ export function createTranslateLoader(http: HttpClient) {
     ActivitiesPage,
     ActivityPage,
     ItinerariesPage,
+    ItineraryPage,
     MyTripsPage,
     UserPage,
     HelpPage,
@@ -63,6 +65,7 @@ export function createTranslateLoader(http: HttpClient) {
     ActivitiesPage,
     ActivityPage,
     ItinerariesPage,
+    ItineraryPage,
     MyTripsPage,
     UserPage,
     HelpPage,

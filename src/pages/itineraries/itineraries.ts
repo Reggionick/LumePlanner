@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { LumeHttpProvider } from "../../providers/lume-http/lume-http";
 
+import { ItineraryPage } from "../itinerary/itinerary";
+
 @Component({
   selector: 'page-itineraries',
   templateUrl: 'itineraries.html',
@@ -31,6 +33,9 @@ export class ItinerariesPage {
   }
 
   onItineraryClick (itinerary) {
-
+    this.navCtrl.push(ItineraryPage, {
+      itinerary: itinerary,
+      city: this.city
+    });
   }
 }
