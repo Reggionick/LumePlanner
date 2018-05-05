@@ -13,7 +13,9 @@
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve:l": "ionic-app-scripts serve -l",
     "cordovarunios": "ionic cordova run ios",
+    "cordovarunioslive": "ionic cordova run ios -l",
     "cordovarunandroid": "ionic cordova run android",
+    "cordovarunandroidlive": "ionic cordova run android -l",
     "cordovarunbrowser": "ionic cordova run browser"
   },
   "dependencies": {
