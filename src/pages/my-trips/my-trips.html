@@ -1,9 +1,4 @@
-<!--
-  Generated template for the MyTripsPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -17,17 +12,30 @@
 
 
 <ion-content>
-  <div id="my-trips-map"></div>
-  <div id="my-trips-results">
-    <div *ngFor="let itinerary of itinerariesVisits">
-      <span (click)="onItineraryClick(itinerary.name)">{{itinerary.name}}</span>
-      <div *ngFor="let visit of itinerary.visits">
-        <div class="itineraryPlace" (click)="onItineraryPlaceClick(visit)">
-          <div *ngIf="visit.visited; then thenBlock else elseBlock"></div>
-          <ng-template #thenBlock><ion-icon name="checkmark-circle"></ion-icon></ng-template>
-          <ng-template #elseBlock><ion-icon name="close-circle"></ion-icon></ng-template>
+  <ion-grid class="mainGrid">
+    <ion-row class="city">
+      <ion-col>
+<!--
+        <div class="cityBox">
+          <img src="http://lume.morselli.unimore.it/DITA/img/cities/{{city.imgFile}}"/>
+          <div class="labelBox">{{ city.pretty_name }}</div>
         </div>
-      </div>
-    </div>
-  </div>
+-->
+      </ion-col>
+    </ion-row>
+    <ion-row class="menu">
+      <ion-col>
+        <ion-scroll scrollY="true">
+          <ul>
+            <li class="itineraryElement" *ngFor="let itinerary of itinerariesVisits">
+              <div class="title">{{ itinerary.name }}</div>
+              <ul>
+                <li class="visitElement" [ngClass]="{visited: visit.visited}" *ngFor="let visit of itinerary.visits">{{visit.displayName.split(',')[0]}}</li>
+              </ul>
+            </li>
+          </ul>
+        </ion-scroll>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

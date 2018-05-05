@@ -1,21 +1,85 @@
 page-my-trips {
 
-  #my-trips-map {
-    position: relative;
-    width: 100%;
-    height: 50%;
-    top: 0;
+  ion-grid.mainGrid {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0 !important;
   }
 
-  #my-trips-results {
-    //position: relative;
+  ion-grid.mainGrid ion-row.city {
+    flex: 0;
   }
 
-  //.itineraryPlace {
+  ion-grid.mainGrid ion-row.menu {
+    flex: 3;
+    background-color: rgba(0,0,0,0.50);
+    border-top: 5px solid #000;
+  }
+
+  //div.cityBox {
+  //  list-style-type: none;
   //  position: relative;
-  //  display: block;
-  //  float: left;
-  //  width: 25px;
-  //  height: 25px;
+  //  height: 8em;
+  //  margin: 8px 16px;
+  //  border-radius: 5px;
+  //  border: solid 1.5px #3d3d3d;
   //}
+  //
+  //div.cityBox div.labelBox {
+  //  position: absolute;
+  //  width: 100%;
+  //  bottom: 0;
+  //  padding: 2px;
+  //  background-image: linear-gradient(to bottom, #000000, #3d3d3d);
+  //  color: #ffffff;
+  //}
+
+  ion-scroll {
+    height: 100%;
+
+    ul {
+      margin: 0;
+      padding: 0;
+
+      li.itineraryElement {
+        list-style-type: none;
+        position: relative;
+        margin: 8px 16px;
+        border-radius: 5px;
+        border: solid 1.5px #3d3d3d;
+        background-color: #ffffff;
+
+        div.title {
+          position: relative;
+          top: 2px;
+          left: 2%;
+        }
+
+        ul {
+          margin: 5px 0;
+          padding: 0;
+
+          li.visitElement {
+            list-style-type: none;
+          }
+
+          li.visitElement:before{
+            content: '';
+            display: inline-block;
+            height: 15px;
+            width: 15px;
+            margin: 0 4px;
+            background: url("../../assets/imgs/fail-icon.svg") center no-repeat;
+            background-size: contain;
+          }
+
+          li.visitElement.visited:before {
+            background: url("../../assets/imgs/check-icon.svg") center no-repeat;
+            background-size: contain;
+          }
+        }
+      }
+    }
+  }
 }

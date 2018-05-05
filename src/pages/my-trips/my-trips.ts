@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {GoogleMaps, GoogleMap, GoogleMapsEvent, BaseArrayClass, Spherical} from '@ionic-native/google-maps';
+import { Spherical } from '@ionic-native/google-maps';
 
 import { LumeHttpProvider } from "../../providers/lume-http/lume-http";
 
@@ -10,7 +10,6 @@ import { LumeHttpProvider } from "../../providers/lume-http/lume-http";
 })
 export class MyTripsPage {
 
-  map: GoogleMap;
   itinerariesVisits: Array<any>;
   visitTolerance = 100;
 
@@ -24,23 +23,7 @@ export class MyTripsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyTripsPage');
 
-    this.loadMap();
-  }
-
-  loadMap() {
-    this.map = GoogleMaps.create('my-trips-map', {
-      camera: {
-        target: {
-          lng: 10.667276,
-          lat: 44.687561
-        },
-        zoom: 8
-      }
-    });
-
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      this.getUserItineraries();
-    });
+    this.getUserItineraries();
   }
 
   getUserItineraries() {
@@ -57,41 +40,6 @@ export class MyTripsPage {
             lat: value.latLon[i][0]
           })
         }
-
-        this.map.addPolyline({
-          points: latlon,
-          color: 'red',
-          width: 3
-        }).then(value1 => {
-          this.map.animateCamera({
-            target: {
-              lng: value.latLon[0][1],
-              lat: value.latLon[0][0]
-            },
-            zoom: 15
-          });
-        });
-
-        let markers = [];
-
-        for (let k in value.itineraries) {
-          let pois = value.itineraries[k];
-
-          for (let i = 0; i < pois.length; i++) {
-            markers.push({
-              position: {
-                lng: pois[i].geometry.coordinates[0],
-                lat: pois[i].geometry.coordinates[1]
-              },
-              title: pois[i].display_name
-            });
-          }
-        }
-
-        let baseArrayClass = new BaseArrayClass(markers);
-        baseArrayClass.mapAsync((element) => {
-          // this.map.addMarker(element);
-        });
 
         this.itinerariesVisits = [];
         for (let k in value.itineraries) {
@@ -122,6 +70,7 @@ export class MyTripsPage {
       }
       result.push({
         visited: visited,
+        displayName: pois[i].display_name,
         coord: {
           lng: thisPoiCoord[0],
           lat: thisPoiCoord[1]
@@ -131,16 +80,4 @@ export class MyTripsPage {
 
     return result;
   }
-
-  onItineraryClick(itinerary: any) {
-    console.log("Should move to fit shape:", itinerary);
-  }
-
-  onItineraryPlaceClick(itinerary: any) {
-    this.map.moveCamera({
-      target: itinerary.coord,
-      zoom: 16
-    });
-  }
-
 }
