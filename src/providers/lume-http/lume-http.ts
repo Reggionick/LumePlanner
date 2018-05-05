@@ -30,7 +30,7 @@ export class LumeHttpProvider {
   }
 
   getCheckuser() {
-    return this.http.get(this.ditaServer + "checkuser?userid=27631344012962633"/*this.user*/);
+    return this.http.get(this.ditaServer + "checkuser?userid=" + this.user);
   }
 
   postPreferences(preferences: any) {
