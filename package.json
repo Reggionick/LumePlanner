@@ -39,6 +39,7 @@
     "@ngx-translate/http-loader": "^2.0.1",
     "cordova-android": "7.1.0",
     "cordova-browser": "5.0.3",
+    "cordova-fabric-plugin": "^1.1.14-dev",
     "cordova-ios": "^4.5.4",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-email-composer": "^0.8.15",
@@ -79,7 +80,11 @@
         "ANDROID_SUPPORT_V4_VERSION": "24.1.0"
       },
       "cordova-plugin-email-composer": {},
-      "cordova-plugin-mauron85-background-geolocation": {}
+      "cordova-plugin-mauron85-background-geolocation": {},
+      "cordova-fabric-plugin": {
+        "FABRIC_API_KEY": "394cde69ed7887d642a52b1dd2d787dde388edcb",
+        "FABRIC_API_SECRET": "b889a7291c5565356819ce1c759b345dc9e8435998950ab9737009bf52c31ab3"
+      }
     },
     "platforms": [
       "ios",

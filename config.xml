@@ -92,4 +92,8 @@
     <engine name="browser" spec="5.0.3" />
     <plugin name="cordova-plugin-mauron85-background-geolocation" spec="^2.3.5" />
     <engine name="android" spec="~7.1.0" />
+    <plugin name="cordova-fabric-plugin" spec="^1.1.14-dev">
+        <variable name="FABRIC_API_KEY" value="394cde69ed7887d642a52b1dd2d787dde388edcb" />
+        <variable name="FABRIC_API_SECRET" value="b889a7291c5565356819ce1c759b345dc9e8435998950ab9737009bf52c31ab3" />
+    </plugin>
 </widget>
