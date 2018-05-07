@@ -30,9 +30,9 @@ export class MyApp {
     this.initializeApp();
     this.initializeUser();
 
-    if ( document.URL.indexOf( 'http' ) === -1 ) {
-      this.initializeBackgroundGeolocation();
-    }
+    // if ( document.URL.indexOf( 'http' ) === -1 ) {
+    //   this.initializeBackgroundGeolocation();
+    // }
 
     translate.use('it');
 
