@@ -46,7 +46,7 @@ export class LumeHttpProvider {
     return this.http.post(this.ditaServer + "newplan", plan);
   }
 
-  acceptPlan(plan: any) {
+  postAcceptPlan(plan: any) {
     plan.user = this.user;
     return this.http.post(this.ditaServer + "accept_plan", plan);
   }

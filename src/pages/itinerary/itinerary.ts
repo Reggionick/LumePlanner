@@ -176,7 +176,7 @@ export class ItineraryPage {
 
   vaiPressed() {
     this.plan.selected = Object.keys(this.plan.plans)[2];
-    this.lumeHttp.acceptPlan(this.plan).subscribe(
+    this.lumeHttp.postAcceptPlan(this.plan).subscribe(
       value => {
       }
     )
