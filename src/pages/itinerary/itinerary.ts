@@ -36,7 +36,7 @@ export class ItineraryPage {
   loadMap() {
     // Create a map after the view is loaded.
     // (platform is already ready in app.component.ts)
-    this.map = GoogleMaps.create('map_canvas', {
+    this.map = GoogleMaps.create('itinerary_map', {
       controls: {
         myLocation: true,
         myLocationButton: true
