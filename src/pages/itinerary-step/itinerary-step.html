@@ -1,0 +1,28 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">Chiudi</button><!--TODO: translate-->
+    </ion-buttons>
+    <ion-title>ItineraryStep</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  <div id="itinerarystep_map">
+  </div>
+  <div id="activityDetail" *ngIf="nextActivity">
+    <div class="image">
+      <img src="{{nextActivity.photo_url}}">
+    </div>
+    <div class="label">{{nextActivity.display_name.split(',')[0]}}</div>
+    <div class="description">{{nextActivity.description}}</div>
+    <div class="buttonsBox">
+      <div class="bus" (click)="busPressed()">Bus</div><!--TODO: translate-->
+      <div class="prossima" (click)="prossimaPressed()">{{nextStepLabel}}</div><!--TODO: translate-->
+    </div>
+  </div>
+</ion-content>

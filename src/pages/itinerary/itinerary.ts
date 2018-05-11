@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { ModalController, NavController, NavParams } from 'ionic-angular';
 import {GoogleMaps, GoogleMap, GoogleMapsEvent, MarkerCluster, MarkerOptions, Marker} from '@ionic-native/google-maps';
 import * as moment from 'moment';
 
 import {LumeHttpProvider} from "../../providers/lume-http/lume-http";
-import {templateJitUrl} from "@angular/compiler";
+
+import {ItineraryStepPage} from "../itinerary-step/itinerary-step";
 
 @Component({
   selector: 'page-itinerary',
@@ -18,15 +19,17 @@ export class ItineraryPage {
   itinerary: any;
   city: any;
   plan: any;
+  planType: number;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    public modalCtrl: ModalController,
     public lumeHttp: LumeHttpProvider
   ) {
     this.itinerary = this.navParams.data.itinerary;
     this.city = this.navParams.data.city;
-
+    this.planType = 2;
   }
 
   ionViewDidLoad() {
@@ -175,10 +178,25 @@ export class ItineraryPage {
   }
 
   vaiPressed() {
-    this.plan.selected = Object.keys(this.plan.plans)[2];
+    this.plan.selected = Object.keys(this.plan.plans)[this.planType];
     this.lumeHttp.postAcceptPlan(this.plan).subscribe(
       value => {
+        if (value) {
+          this.startItinerary();
+        }
       }
     )
+  }
+
+  startItinerary() {
+    const data = {
+      city: this.city,
+      plan: this.plan
+    };
+    const itineraryStepModal = this.modalCtrl.create(ItineraryStepPage, data);
+    itineraryStepModal.onDidDismiss(data => {
+      // this.navCtrl.popToRoot();
+    });
+    itineraryStepModal.present();
   }
 }

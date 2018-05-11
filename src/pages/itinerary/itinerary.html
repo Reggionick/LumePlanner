@@ -13,6 +13,17 @@
   </div>
   <div id="detail" *ngIf="plan">
     <div class="buttonsBox">
+      <ion-segment [(ngModel)]="planType">
+        <ion-segment-button value="0">
+          asis
+        </ion-segment-button>
+        <ion-segment-button value="1">
+          crowd
+        </ion-segment-button>
+        <ion-segment-button value="2">
+          shortest
+        </ion-segment-button>
+      </ion-segment>
       <div class="vai" (click)="vaiPressed()">Vai</div>
     </div>
   </div>

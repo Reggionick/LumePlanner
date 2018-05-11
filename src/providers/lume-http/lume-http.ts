@@ -41,7 +41,7 @@ export class LumeHttpProvider {
   getRoute(fromCoord: {lat: number, lon: number}, toCoord: {lat: number, lon: number}) {
     const start = fromCoord.lat + "," + fromCoord.lon;
     const end = toCoord.lat + "," + toCoord.lon;
-    return this.http.get(this.ditaServer + "http://lume.morselli.unimore.it/DITA/WS/route?vehicle=foot&start=" + start + "&end=" + end);
+    return this.http.get(this.ditaServer + "route?vehicle=foot&start=" + start + "&end=" + end);
   }
 
   postPreferences(preferences: any) {

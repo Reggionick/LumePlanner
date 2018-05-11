@@ -24,6 +24,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
 
 import { LumeHttpProvider } from '../providers/lume-http/lume-http';
+import {ItineraryStepPage} from "../pages/itinerary-step/itinerary-step";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'http://lume.morselli.unimore.it/DITA/files/lang/', '.json');
@@ -39,6 +40,7 @@ export function createTranslateLoader(http: HttpClient) {
     ActivityPage,
     ItinerariesPage,
     ItineraryPage,
+    ItineraryStepPage,
     MyTripsPage,
     UserPage,
     HelpPage,
@@ -66,6 +68,7 @@ export function createTranslateLoader(http: HttpClient) {
     ActivityPage,
     ItinerariesPage,
     ItineraryPage,
+    ItineraryStepPage,
     MyTripsPage,
     UserPage,
     HelpPage,
