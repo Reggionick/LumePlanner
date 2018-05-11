@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {AlertController, NavParams, ViewController} from 'ionic-angular';
 import { GoogleMap, GoogleMaps, GoogleMapsEvent, ILatLng, LocationService, Marker, MarkerCluster, MarkerOptions, MyLocation, Polyline, PolylineOptions } from "@ionic-native/google-maps";
+import {BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationResponse} from "@ionic-native/background-geolocation";
 
 import { LumeHttpProvider } from "../../providers/lume-http/lume-http";
 
@@ -27,6 +28,7 @@ export class ItineraryStepPage {
     public viewCtrl: ViewController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
+    public backgroundGeolocation: BackgroundGeolocation,
     public lumeHttp: LumeHttpProvider
   ) {
     this.city = this.navParams.data.city;
@@ -47,6 +49,8 @@ export class ItineraryStepPage {
       this.goToNextStep();
 
     });
+
+    this.initializeBackgroundGeolocation();
 
   }
 
@@ -96,6 +100,33 @@ export class ItineraryStepPage {
     this.addPathToMap();
   }
 
+  initializeBackgroundGeolocation() {
+
+    const config: BackgroundGeolocationConfig = {
+      desiredAccuracy: 10,
+      stationaryRadius: 20,
+      distanceFilter: 30,
+      debug: true, //  enable this hear sounds for background-geolocation life-cycle.
+      stopOnTerminate: false, // enable this to clear background location settings when the app terminates
+    };
+
+    this.backgroundGeolocation.configure(config)
+      .subscribe((location: BackgroundGeolocationResponse) => {
+
+        console.log(JSON.stringify(location));
+        this.lastPosition = {
+          lat: location.coords.latitude,
+          lon: location.coords.longitude,
+        };
+        this.reloadRoute();
+
+        this.backgroundGeolocation.finish();
+
+      });
+
+    this.backgroundGeolocation.start();
+  }
+
   goToNextStep() {
 
     if (this.itinerary.visited === null || this.itinerary.visited.length === 0) {
@@ -107,6 +138,15 @@ export class ItineraryStepPage {
     else {
       this.nextActivity = this.itinerary.arrival;
     }
+
+    if (this.nextActivity == this.itinerary.arrival) {
+      this.nextStepLabel = "Fine"; //TODO: transalte
+    }
+
+    this.reloadRoute();
+  }
+
+  reloadRoute() {
 
     const destinationCoordinates = {
       lat: this.nextActivity.geometry.coordinates[1],
@@ -134,10 +174,6 @@ export class ItineraryStepPage {
 
       }
     );
-
-    if (this.nextActivity == this.itinerary.arrival) {
-      this.nextStepLabel = "Fine"; //TODO: transalte
-    }
 
   }
 
