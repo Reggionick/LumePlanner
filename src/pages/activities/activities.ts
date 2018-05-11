@@ -25,12 +25,12 @@ export class ActivitiesPage {
     this.filter = this.navParams.data.filter;
 
     const placeholders = {
-      resting: "../../assets/imgs/resting-pin-b.svg",
-      attractions: "../../assets/imgs/actraction-b.svg",
-      tree: "../../assets/imgs/tree-pin-b.svg",
-      lifestyle: "../../assets/imgs/lifestile-pin-b.svg",
-      eating: "../../assets/imgs/eating-pin-b.svg",
-      parks: "../../assets/imgs/park-pin.svg"
+      resting: "assets/imgs/resting-pin-b.svg",
+      attractions: "assets/imgs/actraction-b.svg",
+      tree: "assets/imgs/tree-pin-b.svg",
+      lifestyle: "assets/imgs/lifestile-pin-b.svg",
+      eating: "assets/imgs/eating-pin-b.svg",
+      parks: "assets/imgs/park-pin.svg"
     };
 
     this.lumeHttp.getActivities(this.city.name).subscribe(

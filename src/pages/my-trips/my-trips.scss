@@ -70,12 +70,12 @@ page-my-trips {
             height: 15px;
             width: 15px;
             margin: 0 4px;
-            background: url("../../assets/imgs/fail-icon.svg") center no-repeat;
+            background: url("../assets/imgs/fail-icon.svg") center no-repeat;
             background-size: contain;
           }
 
           li.visitElement.visited:before {
-            background: url("../../assets/imgs/check-icon.svg") center no-repeat;
+            background: url("../assets/imgs/check-icon.svg") center no-repeat;
             background-size: contain;
           }
         }
