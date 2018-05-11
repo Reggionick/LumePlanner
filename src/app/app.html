@@ -9,6 +9,14 @@
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">{{ p.translateKey | translate }}</button>
     </ion-list>
+    <ion-segment>
+      <ion-segment-button (click)="cambioLingua('it')">
+        it
+      </ion-segment-button>
+      <ion-segment-button (click)="cambioLingua('en')">
+        en
+      </ion-segment-button>
+    </ion-segment>
   </ion-content>
 
 </ion-menu>
