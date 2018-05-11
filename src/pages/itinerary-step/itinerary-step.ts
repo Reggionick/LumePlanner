@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavParams, ViewController } from 'ionic-angular';
+import {AlertController, NavParams, ViewController} from 'ionic-angular';
 import { GoogleMap, GoogleMaps, GoogleMapsEvent, ILatLng, LocationService, Marker, MarkerCluster, MarkerOptions, MyLocation, Polyline, PolylineOptions } from "@ionic-native/google-maps";
 
 import { LumeHttpProvider } from "../../providers/lume-http/lume-http";
@@ -26,6 +26,7 @@ export class ItineraryStepPage {
   constructor(
     public viewCtrl: ViewController,
     public navParams: NavParams,
+    public alertCtrl: AlertController,
     public lumeHttp: LumeHttpProvider
   ) {
     this.city = this.navParams.data.city;
@@ -50,7 +51,22 @@ export class ItineraryStepPage {
   }
 
   dismiss() {
-    this.viewCtrl.dismiss();
+    let prompt = this.alertCtrl.create({
+      // title: 'Login',
+      message: "Vuoi abbandonare?",//TODO: translate
+      buttons: [
+        {
+          text: 'Annulla'//TODO: translate
+        },
+        {
+          text: 'Abbandona',//TODO: translate
+          handler: data => {
+            this.viewCtrl.dismiss();
+          }
+        }
+      ]
+    });
+    prompt.present();
   }
 
   loadMap() {
@@ -132,7 +148,25 @@ export class ItineraryStepPage {
   prossimaPressed() {
 
     if (this.nextActivity == this.itinerary.arrival) {
+      let prompt = this.alertCtrl.create({
+        // title: 'Login',
+        message: "Itinerario completato!",//TODO: translate
+        buttons: [
+          {
+            text: 'Condividi',//TODO: translate
+            handler: data => {
 
+            }
+          },
+          {
+            text: 'Chiudi',//TODO: translate
+            handler: data => {
+              this.viewCtrl.dismiss();
+            }
+          }
+        ]
+      });
+      prompt.present();
     } else {
       this.lumeHttp.postVisit(this.city.name, this.nextActivity).subscribe(
         value => {
