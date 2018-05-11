@@ -24,8 +24,24 @@ export class ActivitiesPage {
     this.city = this.navParams.data.city;
     this.filter = this.navParams.data.filter;
 
+    const placeholders = {
+      resting: "../../assets/imgs/resting-pin-b.svg",
+      attractions: "../../assets/imgs/actraction-b.svg",
+      tree: "../../assets/imgs/tree-pin-b.svg",
+      lifestyle: "../../assets/imgs/lifestile-pin-b.svg",
+      eating: "../../assets/imgs/eating-pin-b.svg",
+      parks: "../../assets/imgs/park-pin.svg"
+    };
+
     this.lumeHttp.getActivities(this.city.name).subscribe(
       (value: any) => {
+
+        for (const activity of value) {
+          if (!activity.photo_url) {
+            activity.photo_url = placeholders[activity.category];
+          }
+        }
+
         if (this.filter === "cosedavedere") {
           this.activities = value;
         } else {
@@ -48,5 +64,5 @@ export class ActivitiesPage {
   onActivityClick(activity: any) {
     this.navCtrl.push(ActivityPage, activity)
   }
-  
+
 }
