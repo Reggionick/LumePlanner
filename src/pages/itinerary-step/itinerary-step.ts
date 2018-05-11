@@ -149,7 +149,6 @@ export class ItineraryStepPage {
 
     if (this.nextActivity == this.itinerary.arrival) {
       let prompt = this.alertCtrl.create({
-        // title: 'Login',
         message: "Itinerario completato!",//TODO: translate
         buttons: [
           {
