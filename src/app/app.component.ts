@@ -28,7 +28,9 @@ export class MyApp {
     public  translate: TranslateService
   ) {
     this.initializeApp();
-    this.initializeUser();
+    if (!window.localStorage.getItem("user")) {
+      this.initializeUser();
+    }
 
     translate.use('it');
 
@@ -50,7 +52,7 @@ export class MyApp {
   }
 
   initializeUser() {
-    let user = ("" + Math.random()).substring(2);
+    const user = ("" + Math.random()).substring(2);
     window.localStorage.setItem("user", user);
   }
 
