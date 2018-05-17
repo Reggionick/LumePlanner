@@ -1,0 +1,36 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>MyTripsDetail</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-grid class="mainGrid">
+    <ion-row class="city">
+      <ion-col>
+        <div class="cityBox">
+          <img src="http://lume.morselli.unimore.it/DITA/img/cities/{{city.imgFile}}"/>
+          <div class="labelBox">{{ city.pretty_name }}</div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="list">
+      <ion-col>
+        <ion-scroll scrollY="true">
+          <ul>
+            <li class="itineraryElement" *ngFor="let itinerary of itinerariesVisits">
+              <div class="title">{{ itinerary.name }}</div>
+              <ul>
+                <li class="visitElement" [ngClass]="{visited: visit.visited}" *ngFor="let visit of itinerary.visits">{{visit.displayName.split(',')[0]}}</li>
+              </ul>
+            </li>
+          </ul>
+        </ion-scroll>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

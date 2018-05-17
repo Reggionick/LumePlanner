@@ -13,7 +13,9 @@ import { ActivitiesPage } from "../pages/activities/activities";
 import { ActivityPage } from "../pages/activity/activity";
 import { ItinerariesPage } from "../pages/itineraries/itineraries";
 import { ItineraryPage } from "../pages/itinerary/itinerary";
+import { ItineraryStepPage } from "../pages/itinerary-step/itinerary-step";
 import { MyTripsPage } from '../pages/my-trips/my-trips';
+import { MyTripsDetailPage } from "../pages/my-trips-detail/my-trips-detail";
 import { UserPage } from '../pages/user/user';
 import { HelpPage } from '../pages/help/help';
 import { CreateTrackPage } from "../pages/create-track/create-track";
@@ -24,7 +26,6 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
 
 import { LumeHttpProvider } from '../providers/lume-http/lume-http';
-import {ItineraryStepPage} from "../pages/itinerary-step/itinerary-step";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'http://lume.morselli.unimore.it/DITA/files/lang/', '.json');
@@ -42,6 +43,7 @@ export function createTranslateLoader(http: HttpClient) {
     ItineraryPage,
     ItineraryStepPage,
     MyTripsPage,
+    MyTripsDetailPage,
     UserPage,
     HelpPage,
     CreateTrackPage
@@ -70,6 +72,7 @@ export function createTranslateLoader(http: HttpClient) {
     ItineraryPage,
     ItineraryStepPage,
     MyTripsPage,
+    MyTripsDetailPage,
     UserPage,
     HelpPage,
     CreateTrackPage

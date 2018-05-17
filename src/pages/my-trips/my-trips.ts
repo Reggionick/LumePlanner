@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Spherical } from '@ionic-native/google-maps';
 
 import { LumeHttpProvider } from "../../providers/lume-http/lume-http";
+import {MyTripsDetailPage} from "../my-trips-detail/my-trips-detail";
 
 @Component({
   selector: 'page-my-trips',
@@ -10,8 +11,8 @@ import { LumeHttpProvider } from "../../providers/lume-http/lume-http";
 })
 export class MyTripsPage {
 
-  itinerariesVisits: Array<any>;
-  visitTolerance = 100;
+  cities: Array<any>;
+  checkUser: any;
 
   constructor(
     public navCtrl: NavController,
@@ -28,56 +29,33 @@ export class MyTripsPage {
 
   getUserItineraries() {
 
-    this.lumeHttp.getCheckuser().subscribe( (value: any) => {
+    this.lumeHttp.getCities().subscribe(
+      (cities: Array<any>) => {
 
-      if (value.latLon.length > 1) {
 
-        let latlon = [];
+        this.lumeHttp.getCheckuser().subscribe( (value: any) => {
 
-        for (let i = 0; i < value.latLon.length; i++) {
-          latlon.push({
-            lng: value.latLon[i][1],
-            lat: value.latLon[i][0]
-          })
-        }
+          this.checkUser = value;
 
-        this.itinerariesVisits = [];
-        for (let k in value.itineraries) {
-          this.itinerariesVisits.push({
-            name: k,
-            visits: this.checkItineraryVisits(value, k)
-          });
-        }
+          this.cities = [];
+          for (const city in value.itineraries) {
+            for (let i = 0; i < cities.length; i++) {
+              if (cities[i].name === city) {
+                this.cities.push(cities[i]);
+                break;
+              }
+            }
+          }
+        });
       }
-
-    });
+    );
   }
 
-  checkItineraryVisits(data: any, itineraryKey: string) {
-    const pois = data.itineraries[itineraryKey];
-    let result = [];
-
-    for (let i = 0; i < pois.length; i++) {
-      const thisPoiCoord = pois[i].geometry.coordinates;
-      let visited = false;
-      for (let j = 0; j < data.latLon.length ; j++) {
-        const dist = Spherical.computeDistanceBetween({lng: thisPoiCoord[0], lat: thisPoiCoord[1]}, {lng: data.latLon[j][1], lat: data.latLon[j][0]});
-
-        if (dist < this.visitTolerance) {
-          visited = true;
-          break;
-        }
-      }
-      result.push({
-        visited: visited,
-        displayName: pois[i].display_name,
-        coord: {
-          lng: thisPoiCoord[0],
-          lat: thisPoiCoord[1]
-        }
-      });
-    }
-
-    return result;
+  onCityClick(city: any) {
+    this.navCtrl.push(MyTripsDetailPage, {
+      city: city,
+      checkUser: this.checkUser
+    })
   }
+
 }
