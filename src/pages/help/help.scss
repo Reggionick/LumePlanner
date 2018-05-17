@@ -1,3 +1,27 @@
 page-help {
 
+  ion-grid {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+
+    ion-row.text {
+      flex: 3;
+
+      ion-textarea {
+        height: 100%;
+
+        textarea {
+          height: 100%;
+        }
+      }
+    }
+
+    ion-row.send {
+      flex: 1;
+    }
+
+  }
+
+
 }

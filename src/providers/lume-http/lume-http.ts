@@ -77,6 +77,14 @@ export class LumeHttpProvider {
     return this.http.post(this.ditaServer + "finish", this.user);
   }
 
+  postHelp(email: string, text: string) {
+    const jsonObj = {
+      user: this.user,
+      email: email,
+      txt: text
+    };
+    return this.http.post(this.ditaServer + "help", jsonObj);
+  }
 
   getCrowd(city: string) {
     return this.http.get(this.ditaServerFiles + "data/" + city + "/crowd.json");

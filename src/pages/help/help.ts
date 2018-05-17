@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { EmailComposer } from "@ionic-native/email-composer";
+import { AlertController, NavController, NavParams } from 'ionic-angular';
+
+import { LumeHttpProvider } from "../../providers/lume-http/lume-http";
 
 @Component({
   selector: 'page-help',
@@ -13,30 +14,28 @@ export class HelpPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public emailComposer: EmailComposer
+    public alertCtrl: AlertController,
+    public lumeHttp: LumeHttpProvider
+
   ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HelpPage');
 
-    if ( document.URL.indexOf( 'http' ) === -1 ) {
-      this.emailComposer.isAvailable().then((available: boolean) =>{});
-    }
-    
   }
 
   onInviaPressed() {
-    const user = window.localStorage.getItem("user");
-
-    let email = {
-      to: 'marco.mamei@gmail.com',
-      subject: 'Lume help request',
-      body: this.helpText + "<br/><br/> from: "+ user,
-      isHtml: true
-    };
-
-    this.emailComposer.open(email);
+    this.lumeHttp.postHelp("", this.helpText).subscribe(
+      value => {
+        if (value) {
+          let alert = this.alertCtrl.create({
+            subTitle: 'Richiesta inviata correttamente', //TODO: translate
+            buttons: ['OK'] //TODO: translate
+          });
+          alert.present();
+        }
+      }
+    );
   }
 
 }

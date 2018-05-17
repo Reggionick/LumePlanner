@@ -18,12 +18,12 @@
 
 <ion-content>
   <ion-grid>
-    <ion-row>
+    <ion-row class="text">
       <ion-col>
         <ion-textarea placeholder="{{ 'inseriscidescrizione' | translate}}" [(ngModel)]="helpText"></ion-textarea>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row class="send">
       <ion-col>
         <button ion-button block (click)="onInviaPressed()">{{ 'inviasegnalazione' | translate}}</button>
       </ion-col>
