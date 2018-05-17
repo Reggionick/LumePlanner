@@ -28,6 +28,9 @@
                 </div>
                 <div class="title">{{ filterActivityName(activity.display_name) }}</div>
                 <div class="category">{{ activity.category | translate }}</div>
+                <div *ngIf="activity.isFavourite; then thenBlock else elseBlock"></div>
+                <ng-template #thenBlock><img class="favourite" src="assets/imgs/prefer-star-red.svg" (click)="onFavouriteClick($event, activity)"/></ng-template>
+                <ng-template #elseBlock><img class="favourite" src="assets/imgs/prefer-star-empty.svg" (click)="onFavouriteClick($event, activity)"/></ng-template>
               </li>
             </ul>
         </ion-scroll>

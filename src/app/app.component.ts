@@ -32,6 +32,10 @@ export class MyApp {
       this.initializeUser();
     }
 
+    if (!window.localStorage.getItem("favourites")) {
+      this.initializeFavourites();
+    }
+
     translate.use('it');
 
     this.pages = [
@@ -54,6 +58,11 @@ export class MyApp {
   initializeUser() {
     const user = ("" + Math.random()).substring(2);
     window.localStorage.setItem("user", user);
+  }
+
+  initializeFavourites() {
+    const favourites = JSON.stringify({});
+    window.localStorage.setItem("favourites", favourites);
   }
 
 
