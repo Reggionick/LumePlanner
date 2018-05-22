@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import {AlertController, NavParams, ViewController} from 'ionic-angular';
+import { AlertController, ModalController, NavParams, ViewController } from 'ionic-angular';
 import { GoogleMap, GoogleMaps, GoogleMapsEvent, ILatLng, LocationService, Marker, MarkerCluster, MarkerOptions, MyLocation, Polyline, PolylineOptions } from "@ionic-native/google-maps";
 import {BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationResponse} from "@ionic-native/background-geolocation";
 
 import { LumeHttpProvider } from "../../providers/lume-http/lume-http";
+
+import { ItineraryBusPage } from "../itinerary-bus/itinerary-bus";
 
 @Component({
   selector: 'page-itinerary-step',
@@ -28,6 +30,7 @@ export class ItineraryStepPage {
     public viewCtrl: ViewController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
+    public modalCtrl: ModalController,
     public backgroundGeolocation: BackgroundGeolocation,
     public lumeHttp: LumeHttpProvider
   ) {
@@ -179,6 +182,14 @@ export class ItineraryStepPage {
 
   busPressed() {
 
+    const itineraryStepModal = this.modalCtrl.create(ItineraryBusPage, {
+      partenza: this.lastPosition,
+      arrivo: this.nextActivity
+    });
+    itineraryStepModal.onDidDismiss(data => {
+      // this.navCtrl.popToRoot();
+    });
+    itineraryStepModal.present();
   }
 
   prossimaPressed() {

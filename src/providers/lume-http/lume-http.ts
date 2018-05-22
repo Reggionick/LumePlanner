@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -88,5 +88,17 @@ export class LumeHttpProvider {
 
   getCrowd(city: string) {
     return this.http.get(this.ditaServerFiles + "data/" + city + "/crowd.json");
+  }
+  
+  travleplanner(reqParams: any) {
+    const percorso = "percorso=" + JSON.stringify(reqParams);
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/x-www-form-urlencoded'
+      }),
+      withCredentials: true,
+      responseType: 'text' as 'text'
+  };
+    return this.http.post("http://travelplanner.cup2000.it/ricerca/", percorso, options);
   }
 }

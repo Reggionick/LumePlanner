@@ -1,0 +1,17 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">Chiudi</button><!--TODO: translate-->
+    </ion-buttons>
+    <ion-title>ItineraryBus</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <script [innerHTML]="defaultHtml"></script>
+  <div [innerHTML]="responseBox"></div>
+</ion-content>
