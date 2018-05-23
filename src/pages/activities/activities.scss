@@ -8,11 +8,15 @@ page-activities {
   }
 
   ion-grid.mainGrid ion-row.city {
+    flex: 2;
+  }
+
+  ion-grid.mainGrid ion-row.searchBar {
     flex: 1;
   }
 
   ion-grid.mainGrid ion-row.menu {
-    flex: 3;
+    flex: 6;
     background-color: rgba(0,0,0,0.50);
     border-top: 5px solid #000;
   }

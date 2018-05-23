@@ -14,6 +14,7 @@ export class ActivitiesPage {
   city: any;
   filter: string;
 
+  allActivities = [];
   activities = [];
   favourites = {};
 
@@ -47,15 +48,17 @@ export class ActivitiesPage {
         }
 
         if (this.filter === "cosedavedere") {
-          this.activities = value;
+          this.allActivities = value;
         } else if (this.filter === "preferiti") {
           for (const activityIds of Object.keys(this.favourites)) {
-            this.activities.push(this.favourites[activityIds]);
+            this.allActivities.push(this.favourites[activityIds]);
           }
         } else {
-          this.activities = value.filter(
+          this.allActivities = value.filter(
             activity => activity.category === this.filter);
         }
+
+        this.activities = this.allActivities;
       }
     )
 
@@ -63,6 +66,23 @@ export class ActivitiesPage {
 
   ionViewDidLoad() {
 
+  }
+
+  getFilteredActivities (ev: any) {
+
+    let val = ev.target.value;
+
+    if (typeof val == 'undefined' || val.trim() == '') {
+      this.activities = this.allActivities;
+    } else {
+      this.activities = this.allActivities.filter((activity) => {
+        if (activity.display_name) {
+          return (activity.display_name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        } else {
+          return false;
+        }
+      })
+    }
   }
 
   filterActivityName (activityDisplayName): string {

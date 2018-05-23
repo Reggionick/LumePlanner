@@ -18,6 +18,11 @@
         </div>
       </ion-col>
     </ion-row>
+    <ion-row class="searchBar">
+      <ion-col>
+        <ion-searchbar (ionInput)="getFilteredActivities($event)"></ion-searchbar>
+      </ion-col>
+    </ion-row>
     <ion-row class="menu">
       <ion-col>
         <ion-scroll scrollY="true">
