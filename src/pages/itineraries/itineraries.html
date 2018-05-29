@@ -24,7 +24,7 @@
           <ul>
             <li *ngFor="let itinerary of itineraries" (click)="onItineraryClick(itinerary)">
               <div class="image">
-                <img src="{{ itinerary.img ? ('http://lume.morselli.unimore.it/DITA/WS/itineraries/' + itinerary.img) :'' }}"/>
+                <span class="helper"></span><img src="{{ itinerary.img ? ('http://lume.morselli.unimore.it/DITA/WS/itineraries/' + itinerary.img) : 'assets/imgs/itinerari-icon.svg' }}"/>
               </div>
               <div class="title">{{ itinerary.display_name }}</div>
               <div class="time">{{ itinerary.approx_time }}</div>
