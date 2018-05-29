@@ -28,6 +28,7 @@ export class HelpPage {
     this.lumeHttp.postHelp("", this.helpText).subscribe(
       value => {
         if (value) {
+          this.helpText = "";
           let alert = this.alertCtrl.create({
             subTitle: 'Richiesta inviata correttamente', //TODO: translate
             buttons: ['OK'] //TODO: translate
