@@ -1,0 +1,38 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Seleziona</ion-title>
+    <ion-buttons end *ngIf="multiple">
+      <button ion-button (click)="dismiss()">Salva</button><!--TODO: translate-->
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-grid class="mainGrid">
+    <ion-row class="searchBar">
+      <ion-col>
+        <ion-searchbar (ionInput)="getFilteredActivities($event)"></ion-searchbar>
+      </ion-col>
+    </ion-row>
+    <ion-row class="menu">
+      <ion-col>
+        <ion-scroll scrollY="true">
+          <ul>
+            <li *ngFor="let activity of activities" (click)="onActivityClick(activity)">
+              <div class="image">
+                <img src="{{activity.photo_url}}"/>
+              </div>
+              <div class="title">{{ filterActivityName(activity.display_name) }}</div>
+              <div class="category">{{ activity.category | translate }}</div>
+              <ion-icon *ngIf="activity.selezionata" name="checkmark-circle-outline"></ion-icon>
+            </li>
+          </ul>
+        </ion-scroll>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

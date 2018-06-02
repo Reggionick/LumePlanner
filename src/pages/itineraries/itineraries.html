@@ -3,6 +3,11 @@
 
   <ion-navbar>
     <ion-title>{{ 'itineraries' | translate }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addPlan()">
+        <ion-icon ios="ios-add-circle-outline" md="md-add-circle"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>

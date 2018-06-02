@@ -92,14 +92,12 @@ export class ItineraryPage {
           lon: startActivity.geometry.coordinates[0]
         };
 
-        const displayDate = moment().format('YYYY/MM/DD HH:mm:ss');
-
         const newplan = {
           city: this.city.name,
-          start_time : displayDate,
+          start_time : this.itinerary.displayDate || moment().format('YYYY/MM/DD HH:mm:ss'),
           visits : this.itinerary.visits,
-          start_place: place,
-          end_place : place,
+          start_place: this.itinerary.start_place || place,
+          end_place : this.itinerary.end_place  || place,
         };
 
         this.lumeHttp.postPlan(newplan).subscribe(

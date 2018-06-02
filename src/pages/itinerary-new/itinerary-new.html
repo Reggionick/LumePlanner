@@ -1,0 +1,41 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Nuovo Itinerario</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item (click)="partenzaPressed()">
+      Partenza
+      <ion-note item-end>
+        {{(partenza) ? filterActivityName(partenza.display_name ): ""}}
+      </ion-note>
+    </ion-item>
+    <ion-item (click)="arrivoPressed()">
+      Arrivo
+      <ion-note item-end>
+        {{(arrivo) ? filterActivityName(arrivo.display_name ): ""}}
+      </ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Data</ion-label>
+      <ion-datetime displayFormat="YYYY/MM/DD" max="2050" [(ngModel)]="dateStarts"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Orario</ion-label>
+      <ion-datetime displayFormat="HH:mm" [(ngModel)]="timeStarts"></ion-datetime>
+    </ion-item>
+    <ion-item (click)="puntiinteressePressed()">
+      Punti di interesse
+      <ion-note item-end>
+        {{puntiinteresse.length + " selezionati"}}
+      </ion-note>
+    </ion-item>
+  </ion-list>
+      <button ion-button block [disabled]="!(partenza && arrivo && dateStarts && timeStarts && puntiinteresse.length > 0)" (click)="onInviaPressed()">{{ 'create_itinerary' | translate}}</button>
+</ion-content>

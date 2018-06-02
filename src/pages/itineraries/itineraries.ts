@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { LumeHttpProvider } from "../../providers/lume-http/lume-http";
 
 import { ItineraryPage } from "../itinerary/itinerary";
+import { ItineraryNewPage } from "../itinerary-new/itinerary-new";
 
 @Component({
   selector: 'page-itineraries',
@@ -42,5 +43,12 @@ export class ItinerariesPage {
       itinerary: itinerary,
       city: this.city
     });
+  }
+
+  addPlan () {
+    this.navCtrl.push(ItineraryNewPage, {
+      city: this.city
+    });
+
   }
 }
