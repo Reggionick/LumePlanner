@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import * as moment from 'moment';
 
 import { LumeHttpProvider } from "../../providers/lume-http/lume-http";
 
@@ -22,8 +23,12 @@ export class ItinerariesPage {
 
     this.city = this.navParams.data;
 
-    this.lumeHttp.getItineraries(this.city.name, null).subscribe(value => {
-      this.itineraries = value;
+    this.lumeHttp.getItineraries(this.city.name, null).subscribe((value: Array<any>) => {
+      this.itineraries = value.map(itin => {
+        var approx_time = itin.approx_time.split(" ", 2)[0];
+        itin.approx_time = moment.utc(parseInt(approx_time) * 60).format('HH:mm');
+        return itin;
+      });
     })
 
   }
