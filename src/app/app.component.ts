@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation';
 import { TranslateService } from "@ngx-translate/core";
+import cc  from "coupon-code";
 
 import { HomePage } from '../pages/home/home';
 import { MyTripsPage } from '../pages/my-trips/my-trips';
@@ -56,7 +57,7 @@ export class MyApp {
   }
 
   initializeUser() {
-    const user = ("" + Math.random()).substring(2);
+    const user = cc.generate();
     window.localStorage.setItem("user", user);
   }
 

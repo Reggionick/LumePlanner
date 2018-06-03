@@ -42,12 +42,15 @@ export class UserPage {
     }
   ];
 
+  codiceUtente: string;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public lumeHttp: LumeHttpProvider
   ) {
+    this.codiceUtente = window.localStorage.getItem("user");
   }
 
   ionViewDidLoad() {
