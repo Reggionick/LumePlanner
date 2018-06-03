@@ -51,6 +51,9 @@ export class UserPage {
     public lumeHttp: LumeHttpProvider
   ) {
     this.codiceUtente = window.localStorage.getItem("user");
+    if (window.sessionStorage.getItem("preferences")) {
+      this.prefParams = JSON.parse(window.sessionStorage.getItem("preferences"));
+    }
   }
 
   ionViewDidLoad() {
@@ -61,6 +64,8 @@ export class UserPage {
   }
 
   onSavePressed() {
+
+    window.sessionStorage.setItem("preferences",JSON.stringify(this.prefParams));
 
     let valuesSum = 0;
     for (var pref of this.prefParams) {
@@ -73,8 +78,6 @@ export class UserPage {
     }
 
     this.lumeHttp.postPreferences(scaledPrefValues).subscribe(value => {
-      window.sessionStorage.setItem("preferences",JSON.stringify(value));
-
       let alert = this.alertCtrl.create({
         subTitle: 'Preferences saved correctly', //TODO: translate
         buttons: ['OK'] //TODO: translate
