@@ -12,6 +12,8 @@
     "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve:l": "ionic-app-scripts serve -l",
+    "cordovabuildios": "ionic cordova build ios",
+    "cordovabuildandroid": "ionic cordova build android",
     "cordovarunios": "ionic cordova run ios",
     "cordovarunioslive": "ionic cordova run ios -l",
     "cordovarunandroid": "ionic cordova run android",
