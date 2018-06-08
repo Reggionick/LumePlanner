@@ -15,11 +15,11 @@
         <img src="{{activity.photo_url}}"/>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row class="description">
       <ion-col>
         <div>{{ activity.category | translate }}</div>
         <!--<div><a href="{{activity.www}}">Website</a></div>-->
-        <div>{{activity.description}}</div>
+        <div [innerHTML]="activity.description"></div>
       </ion-col>
     </ion-row>
   </ion-grid>

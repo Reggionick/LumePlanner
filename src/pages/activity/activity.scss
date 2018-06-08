@@ -20,6 +20,10 @@ page-activity {
 
   }
 
+  ion-row.description {
+    overflow: scroll;
+  }
+
   #activity_map {
     height: 50%;
   }
