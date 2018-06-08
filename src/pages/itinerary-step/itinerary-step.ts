@@ -158,6 +158,7 @@ export class ItineraryStepPage {
 
     this.lumeHttp.getRoute(this.lastPosition, destinationCoordinates).subscribe(
       (value: any) => {
+        debugger
         let points: Array<ILatLng> = [];
 
         for (let i = 0; i < value.points.coordinates.length; i++) {
@@ -175,6 +176,14 @@ export class ItineraryStepPage {
           this.addPathToMap();
         }
 
+      },
+      error1 => {
+        const alert = this.alertCtrl.create({
+          title: 'Impossibile completare la richiesta',
+          subTitle: error1.statusText,
+          buttons: ['OK']
+        });
+        alert.present();
       }
     );
 
@@ -295,15 +304,17 @@ export class ItineraryStepPage {
       this.currentPolyline.remove();
     }
 
-    this.map.addPolyline(this.currentPath).then(
-      (polyline: Polyline) => {
-        this.currentPolyline = polyline;
+    if (this.currentPath) {
+      this.map.addPolyline(this.currentPath).then(
+        (polyline: Polyline) => {
+          this.currentPolyline = polyline;
 
-        this.map.moveCamera({
-          target: this.currentPath.points
-        });
-      }
-    )
+          this.map.moveCamera({
+            target: this.currentPath.points
+          });
+        }
+      )
+    }
   }
 
 }
