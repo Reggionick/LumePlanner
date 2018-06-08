@@ -25,6 +25,7 @@
     </ion-row>
     <ion-row class="menu">
       <ion-col>
+        <div class="nessuncontenuto" *ngIf="activities.length === 0">Nessun contenuto disponibile con questi criteri</div>
         <ion-scroll scrollY="true">
             <ul>
               <li *ngFor="let activity of activities" (click)="onActivityClick(activity)">
