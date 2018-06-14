@@ -18,7 +18,8 @@
     "cordovarunioslive": "ionic cordova run ios -l",
     "cordovarunandroid": "ionic cordova run android",
     "cordovarunandroidlive": "ionic cordova run android -l",
-    "cordovarunbrowser": "ionic cordova run browser"
+    "cordovarunbrowser": "ionic cordova run browser",
+    "cordovareleaseandroid": "ionic cordova build --release android"
   },
   "dependencies": {
     "@angular/animations": "^5.2.10",
