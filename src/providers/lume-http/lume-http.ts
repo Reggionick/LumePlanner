@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class LumeHttpProvider {
 
-  ditaServer = 'http://lume.morselli.unimore.it/DITA/WS/';
-  ditaServerFiles = 'http://lume.morselli.unimore.it/DITA/WS/files/';
+  ditaServer = 'http://5.144.174.222:8080/DITA/WS/';
+  ditaServerFiles = 'http://5.144.174.222:8080/DITA/WS/files/';
 
   user: string;
 
