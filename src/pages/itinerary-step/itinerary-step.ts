@@ -109,7 +109,7 @@ export class ItineraryStepPage {
       desiredAccuracy: 10,
       stationaryRadius: 20,
       distanceFilter: 30,
-      debug: true, //  enable this hear sounds for background-geolocation life-cycle.
+      debug: false, //  enable this hear sounds for background-geolocation life-cycle.
       stopOnTerminate: false, // enable this to clear background location settings when the app terminates
     };
 
