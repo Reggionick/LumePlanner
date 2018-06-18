@@ -30,7 +30,7 @@ import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
 import { LumeHttpProvider } from '../providers/lume-http/lume-http';
 
 export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, 'http://lume.morselli.unimore.it/DITA/files/lang/', '.json');
+  return new TranslateHttpLoader(http, 'http://5.144.174.222:8080/DITA/files/lang/', '.json');
 }
 
 @NgModule({

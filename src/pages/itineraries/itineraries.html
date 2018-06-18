@@ -18,7 +18,7 @@
     <ion-row class="city">
       <ion-col>
         <div class="cityBox">
-          <img src="http://lume.morselli.unimore.it/DITA/img/cities/{{city.imgFile}}"/>
+          <img src="http://5.144.174.222:8080/DITA/img/cities/{{city.imgFile}}"/>
           <div class="labelBox">{{ city.pretty_name }}</div>
         </div>
       </ion-col>
@@ -29,7 +29,7 @@
           <ul>
             <li *ngFor="let itinerary of itineraries" (click)="onItineraryClick(itinerary)">
               <div class="image">
-                <span class="helper"></span><img src="{{ itinerary.img ? ('http://lume.morselli.unimore.it/DITA/WS/itineraries/' + itinerary.img) : 'assets/imgs/itinerari-icon.svg' }}"/>
+                <span class="helper"></span><img src="{{ itinerary.img ? ('http://5.144.174.222:8080/DITA/WS/itineraries/' + itinerary.img) : 'assets/imgs/itinerari-icon.svg' }}"/>
               </div>
               <div class="title">{{ itinerary.display_name }}</div>
               <div class="time">{{ itinerary.approx_time }}</div>
