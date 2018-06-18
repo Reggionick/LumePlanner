@@ -19,6 +19,7 @@
     "cordovarunandroid": "ionic cordova run android",
     "cordovarunandroidlive": "ionic cordova run android -l",
     "cordovarunbrowser": "ionic cordova run browser",
+    "cordovareleaseios": "ionic cordova build --release ios",
     "cordovareleaseandroid": "ionic cordova build --release android"
   },
   "dependencies": {
