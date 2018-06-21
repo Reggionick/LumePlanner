@@ -110,7 +110,4 @@ export class MappaPage {
     this.navCtrl.push(ActivityPage, this.selectedActivity);
   }
 
-  vaiPressed () {
-
-  }
 }

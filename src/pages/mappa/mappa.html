@@ -13,14 +13,13 @@
 <ion-content>
   <div id="map_canvas">
   </div>
-  <div id="activityDetail" *ngIf="selectedActivity">
+  <div id="activityDetail">
     <div class="image">
-      <img src="{{selectedActivity.photo_url}}">
+      <img src="{{(selectedActivity) ? selectedActivity.photo_url : ''}}">
     </div>
-    <div class="label">{{selectedActivity.display_name}}</div>
+    <div class="label">{{(selectedActivity) ? selectedActivity.display_name : "Seleziona un'attività"}}</div>
     <div class="buttonsBox">
       <div class="info" (click)="infoPressed()">Info</div>
-      <div class="vai" (click)="vaiPressed()">Vai</div>
     </div>
   </div>
 </ion-content>
