@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import * as moment from 'moment';
+import {LocationService, MyLocation} from "@ionic-native/google-maps";
 
 import { LumeHttpProvider } from "../../providers/lume-http/lume-http";
 
@@ -24,14 +25,21 @@ export class ItinerariesPage {
 
     this.city = this.navParams.data;
 
-    this.lumeHttp.getItineraries(this.city.name, null).subscribe((value: Array<any>) => {
-      this.itineraries = value.map(itin => {
-        var approx_time = itin.approx_time.split(" ", 2)[0];
-        itin.approx_time = moment.utc(parseInt(approx_time) * 60).format('HH:mm');
-        return itin;
-      });
-    })
+    LocationService.getMyLocation({enableHighAccuracy: false}).then((myLocation: MyLocation) => {
 
+      const lastPosition = {
+        lat: myLocation.latLng.lat,
+        lng: myLocation.latLng.lng
+      };
+
+      this.lumeHttp.getItineraries(this.city.name, lastPosition).subscribe((value: Array<any>) => {
+        this.itineraries = value.map(itin => {
+          const approx_time = itin.approx_time.split(" ", 2)[0];
+          itin.approx_time = moment.duration(parseInt(approx_time) * 1000).locale("it").humanize();
+          return itin;
+        });
+      })
+    });
   }
 
   ionViewDidLoad() {
