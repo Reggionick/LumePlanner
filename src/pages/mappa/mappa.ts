@@ -85,13 +85,13 @@ export class MappaPage {
           {
             min: 2, max: 100,
             anchor: { x: 16, y: 16 },
-            url: "./assets/markercluster/small.png",
+            url: "assets/imgs/marker.png",
             label: { color: "white" }
           },
           {
             min: 100,
             anchor: { x: 16, y: 16 },
-            url: "./assets/markercluster/large.png",
+            url: "assets/imgs/marker.png",
             label: { color: "white" }
           }
         ]

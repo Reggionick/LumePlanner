@@ -269,7 +269,7 @@ export class ItineraryStepPage {
         {
           min: 1, max: 1000,
           anchor: { x: 16, y: 16 },
-          url: "./assets/markercluster/small.png",
+          url: "assets/imgs/marker.png",
           label: { color: "white" }
         }
       ]
@@ -291,7 +291,7 @@ export class ItineraryStepPage {
         {
           min: 1, max: 1000,
           anchor: { x: 16, y: 16 },
-          url: "./assets/markercluster/small.png",
+          url: "assets/imgs/marker.png",
           label: { color: "white" }
         }
       ]
