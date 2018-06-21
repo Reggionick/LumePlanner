@@ -116,11 +116,18 @@ export class ItineraryStepPage {
     this.backgroundGeolocation.configure(config)
       .subscribe((location: BackgroundGeolocationResponse) => {
 
-        console.log(JSON.stringify(location));
-        this.lastPosition = {
-          lat: location.coords.latitude,
-          lon: location.coords.longitude,
-        };
+        if (typeof location.coords !== "undefined") {
+          this.lastPosition = {
+            lat: location.coords.latitude,
+            lon: location.coords.longitude,
+          };
+        } else {
+          this.lastPosition = {
+            lat: location.latitude || this.lastPosition.lat,
+            lon: location.longitude || this.lastPosition.lon,
+          };
+        }
+
         this.reloadRoute();
 
         this.backgroundGeolocation.finish();
@@ -151,6 +158,8 @@ export class ItineraryStepPage {
 
   reloadRoute() {
 
+    if (!this.nextActivity) return;
+
     const destinationCoordinates = {
       lat: this.nextActivity.geometry.coordinates[1],
       lon: this.nextActivity.geometry.coordinates[0]
@@ -158,7 +167,7 @@ export class ItineraryStepPage {
 
     this.lumeHttp.getRoute(this.lastPosition, destinationCoordinates).subscribe(
       (value: any) => {
-        debugger
+
         let points: Array<ILatLng> = [];
 
         for (let i = 0; i < value.points.coordinates.length; i++) {

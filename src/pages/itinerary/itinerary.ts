@@ -187,14 +187,18 @@ export class ItineraryPage {
   }
 
   startItinerary() {
-    const data = {
-      city: this.city,
-      plan: this.plan
-    };
-    const itineraryStepModal = this.modalCtrl.create(ItineraryStepPage, data);
-    itineraryStepModal.onDidDismiss(data => {
-      // this.navCtrl.popToRoot();
-    });
-    itineraryStepModal.present();
+    this.map.clear().then(
+      () => {
+        const data = {
+          city: this.city,
+          plan: this.plan
+        };
+        const itineraryStepModal = this.modalCtrl.create(ItineraryStepPage, data);
+        itineraryStepModal.onDidDismiss(data => {
+          // this.navCtrl.popToRoot();
+        });
+        itineraryStepModal.present();
+      }
+    );
   }
 }
