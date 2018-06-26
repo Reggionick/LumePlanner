@@ -186,10 +186,10 @@ export class ItineraryStepPage {
         }
 
       },
-      error1 => {
+        () => {
         const alert = this.alertCtrl.create({
           title: 'Impossibile completare la richiesta',
-          subTitle: error1.statusText,
+          subTitle: 'Questa funzionalità è disponibile solamente in Emilia Romagna',
           buttons: ['OK']
         });
         alert.present();
