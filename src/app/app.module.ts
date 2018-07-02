@@ -13,6 +13,7 @@ import { ActivitiesPage } from "../pages/activities/activities";
 import { ActivityPage } from "../pages/activity/activity";
 import { ItinerariesPage } from "../pages/itineraries/itineraries";
 import { ItineraryPage } from "../pages/itinerary/itinerary";
+import { ItineraryDetailPage } from "../pages/itinerary-detail/itinerary-detail";
 import { ItineraryStepPage } from "../pages/itinerary-step/itinerary-step";
 import { ItineraryBusPage } from "../pages/itinerary-bus/itinerary-bus";
 import { ItineraryNewPage } from "../pages/itinerary-new/itinerary-new";
@@ -43,6 +44,7 @@ export function createTranslateLoader(http: HttpClient) {
     ActivityPage,
     ItinerariesPage,
     ItineraryPage,
+    ItineraryDetailPage,
     ItineraryStepPage,
     ItineraryBusPage,
     ItineraryNewPage,
@@ -75,6 +77,7 @@ export function createTranslateLoader(http: HttpClient) {
     ActivityPage,
     ItinerariesPage,
     ItineraryPage,
+    ItineraryDetailPage,
     ItineraryStepPage,
     ItineraryBusPage,
     ItineraryNewPage,

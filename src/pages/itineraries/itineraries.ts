@@ -5,7 +5,7 @@ import {LocationService, MyLocation} from "@ionic-native/google-maps";
 
 import { LumeHttpProvider } from "../../providers/lume-http/lume-http";
 
-import { ItineraryPage } from "../itinerary/itinerary";
+import { ItineraryDetailPage } from "../itinerary-detail/itinerary-detail";
 import { ItineraryNewPage } from "../itinerary-new/itinerary-new";
 
 @Component({
@@ -47,7 +47,7 @@ export class ItinerariesPage {
   }
 
   onItineraryClick (itinerary) {
-    this.navCtrl.push(ItineraryPage, {
+    this.navCtrl.push(ItineraryDetailPage, {
       itinerary: itinerary,
       city: this.city
     });
