@@ -56,7 +56,7 @@ export class ItineraryBusPage {
         this.responseBox = this.sanitizer.bypassSecurityTrustHtml(stringa)
       },
       error => {
-        debugger
+        this.responseBox = "<br /><br /> Impossibile completare la richiesta dalla tua posizione."
       }
     )
 
