@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 export class LumeHttpProvider {
 
   ditaServer = 'http://5.144.174.222:8080/DITA/WS/';
-  ditaServerFiles = 'http://5.144.174.222:8080/DITA/WS/files/';
+  ditaServerFiles = 'http://5.144.174.222:8080/DITA/files/';
 
   user: string;
 
@@ -28,6 +28,20 @@ export class LumeHttpProvider {
     }
 
     return this.http.get(this.ditaServer + "itineraries?" + reqParams);
+  }
+
+  getGpxItineraries(city: any) {
+    return this.http.get(this.ditaServerFiles + "gpx_itineraries/" + city + "/itineraries.json");
+  }
+
+  getGpxFile(city: any, fileName: string) {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/gpx+xml'
+      }),
+      responseType: 'text' as 'text'
+  };
+    return this.http.get(this.ditaServerFiles + "gpx_itineraries/" + city + "/" + fileName, options);
   }
 
   getCheckuser() {

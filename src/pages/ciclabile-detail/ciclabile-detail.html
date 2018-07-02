@@ -1,0 +1,25 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ itinerary.display_name.split(",")[0] }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-grid class="">
+    <ion-row class="" *ngIf="itinerary.img">
+      <ion-col>
+        <img src="{{ 'http://5.144.174.222:8080/DITA/files/gpx_itineraries/' + city.name  + '/' + itinerary.img }}"/>
+      </ion-col>
+    </ion-row>
+    <ion-row class="">
+      <ion-col>
+        {{ itinerary.description }}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <button ion-button block (click)="onVaiPressed()">Vai</button>
+</ion-content>
