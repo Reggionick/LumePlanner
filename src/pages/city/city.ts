@@ -36,6 +36,10 @@ export class CityPage {
         this.navCtrl.push(ItinerariesPage, this.city);
         break;
 
+      case "ciclabili":
+        this.navCtrl.push(CiclabiliPage, this.city);
+        break;
+
       case "cosedavedere":
       case "preferiti":
       case "itinerariaccessibili":
@@ -43,9 +47,6 @@ export class CityPage {
       case "resting":
       case "eating":
       case "fashion":
-      case "ciclabili":
-        this.navCtrl.push(CiclabiliPage, this.city);
-        break;
       case "artigianato":
         this.navCtrl.push(ActivitiesPage, {
           city: this.city,
