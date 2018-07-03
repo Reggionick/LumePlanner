@@ -107,7 +107,16 @@ export class MappaPage {
   }
 
   infoPressed () {
-    this.navCtrl.push(ActivityPage, this.selectedActivity);
+    if (this.selectedActivity) {
+      this.navCtrl.push(ActivityPage, this.selectedActivity);
+    }
+  }
+
+  vaiPressed () {
+    if (this.selectedActivity) {
+      const url = "https://www.google.com/maps/dir/?api=1&destination=" + this.selectedActivity.geometry.coordinates[1] + "," + this.selectedActivity.geometry.coordinates[0];
+      window.open(url, "_system");
+    }
   }
 
 }

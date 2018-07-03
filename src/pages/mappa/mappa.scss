@@ -40,13 +40,27 @@ page-mappa {
         width: 49%;
         height: 100%;
         bottom: 0;
-        right: 0;
+        left: 0;
         background: url("../assets/imgs/left-popup-btn.svg") no-repeat center;
         background-size: contain;
         text-align: center;
         margin-right: 1%;
         padding: 5% 0;
       }
+
+      div.vai {
+        position: absolute;
+        width: 49%;
+        height: 100%;
+        bottom: 0;
+        right: 0;
+        background: url("../assets/imgs/right-popup-btn.svg") no-repeat center;
+        background-size: contain;
+        text-align: center;
+        margin-left: 1%;
+        padding: 5% 0;
+      }
+
     }
 
   }
