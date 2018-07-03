@@ -39,6 +39,7 @@ export class ActivitiesPage {
       (value: any) => {
 
         this.favourites = JSON.parse(window.localStorage.getItem("favourites"));
+        this.favourites = this.favourites[this.city.name] || {};
 
         for (const activity of value) {
           if (!activity.photo_url) {
@@ -99,7 +100,9 @@ export class ActivitiesPage {
       activity.isFavourite = true;
       this.favourites[activity.place_id] = activity;
     }
-    window.localStorage.setItem("favourites", JSON.stringify(this.favourites));
+    let allFavourites = JSON.parse(window.localStorage.getItem("favourites"));
+    allFavourites[this.city.name] = this.favourites;
+    window.localStorage.setItem("favourites", JSON.stringify(allFavourites));
   }
 
   onActivityClick(activity: any) {
