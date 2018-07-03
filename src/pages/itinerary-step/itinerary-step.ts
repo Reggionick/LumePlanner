@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AlertController, ModalController, NavParams, ViewController } from 'ionic-angular';
 import { GoogleMap, GoogleMaps, GoogleMapsEvent, ILatLng, LocationService, Marker, MarkerCluster, MarkerOptions, MyLocation, Polyline, PolylineOptions } from "@ionic-native/google-maps";
 import {BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationResponse} from "@ionic-native/background-geolocation";
+import {Device} from '@ionic-native/device';
 
 import { LumeHttpProvider } from "../../providers/lume-http/lume-http";
 
@@ -32,6 +33,7 @@ export class ItineraryStepPage {
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
     public backgroundGeolocation: BackgroundGeolocation,
+    public device: Device,
     public lumeHttp: LumeHttpProvider
   ) {
     this.city = this.navParams.data.city;
@@ -53,7 +55,9 @@ export class ItineraryStepPage {
 
     });
 
-    this.initializeBackgroundGeolocation();
+    if ((this.device.platform === "Android" && this.device.version.indexOf("8.") === -1) || this.device.platform === "iOS") {
+      this.initializeBackgroundGeolocation();
+    }
 
   }
 
