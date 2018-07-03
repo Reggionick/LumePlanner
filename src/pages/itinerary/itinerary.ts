@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalController, NavController, NavParams } from 'ionic-angular';
-import {GoogleMaps, GoogleMap, GoogleMapsEvent, MarkerCluster, MarkerOptions, Marker} from '@ionic-native/google-maps';
+import { GoogleMaps, GoogleMap, GoogleMapsEvent, MarkerCluster, MarkerOptions, Marker, Polyline, ILatLng } from '@ionic-native/google-maps';
 import * as moment from 'moment';
 
 import {LumeHttpProvider} from "../../providers/lume-http/lume-http";
@@ -15,11 +15,13 @@ export class ItineraryPage {
 
   mapReady: boolean = false;
   map: GoogleMap;
+  currentPolyline: Polyline;
 
   itinerary: any;
   city: any;
   plan: any;
-  planType: number;
+  planType = 2;
+  planTypeEnum = ["asis", "crowd", "shortest"];
 
   constructor(
     public navCtrl: NavController,
@@ -29,7 +31,6 @@ export class ItineraryPage {
   ) {
     this.itinerary = this.navParams.data.itinerary;
     this.city = this.navParams.data.city;
-    this.planType = 2;
   }
 
   ionViewDidLoad() {
@@ -72,6 +73,10 @@ export class ItineraryPage {
     this.creaItinerario();
   }
 
+  segmentChanged () {
+    this.visualizzaItinerario(this.plan.plans[this.planTypeEnum[this.planType]]);
+  }
+
   creaItinerario() {
     this.lumeHttp.getActivities(this.city.name).subscribe(
       (value: Array<any>)  => {
@@ -103,16 +108,14 @@ export class ItineraryPage {
         this.lumeHttp.postPlan(newplan).subscribe(
           plan => {
             this.plan = plan;
-            this.visualizzaItinerario(plan);
+            this.visualizzaItinerario(this.plan.plans[this.planTypeEnum[this.planType]]);
           }
         )
       }
     );
   }
 
-  visualizzaItinerario(plan) {
-
-    const currentPlan = plan.plans.shortest;
+  visualizzaItinerario(currentPlan) {
 
     this.map.addMarker({
       position: {
@@ -130,6 +133,8 @@ export class ItineraryPage {
       title: currentPlan.arrival.display_name
     }).then((marker: Marker) => {});
 
+    let points: Array<ILatLng> = [];
+
     let visited: Array<MarkerOptions> = [];
     for (let i = 0; i < currentPlan.visited.length; i++) {
       visited.push({
@@ -138,6 +143,10 @@ export class ItineraryPage {
           lat: currentPlan.visited[i].visit.geometry.coordinates[1]
         },
         title: currentPlan.visited[i].visit.display_name.split(',')[0]
+      });
+      points.push({
+        lng: currentPlan.visited[i].visit.geometry.coordinates[0],
+        lat: currentPlan.visited[i].visit.geometry.coordinates[1]
       });
     }
     this.map.addMarkerCluster({
@@ -161,6 +170,10 @@ export class ItineraryPage {
         },
         title: currentPlan.to_visit[i].visit.display_name.split(',')[0]
       });
+      points.push({
+        lng: currentPlan.to_visit[i].visit.geometry.coordinates[0],
+        lat: currentPlan.to_visit[i].visit.geometry.coordinates[1]
+      });
     }
     this.map.addMarkerCluster({
       markers: toVisit,
@@ -173,6 +186,20 @@ export class ItineraryPage {
         }
       ]
     }).then((markerCluster: MarkerCluster) => {});
+
+    if (this.currentPolyline) {
+      this.currentPolyline.remove();
+    }
+
+    this.map.addPolyline({points: points}).then(
+      (polyline: Polyline) => {
+        this.currentPolyline = polyline;
+
+        this.map.moveCamera({
+          target: points
+        });
+      }
+    )
   }
 
   vaiPressed() {

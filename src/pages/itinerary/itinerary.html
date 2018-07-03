@@ -13,7 +13,7 @@
   </div>
   <div id="detail" *ngIf="plan">
     <div class="buttonsBox">
-      <ion-segment [(ngModel)]="planType">
+      <ion-segment [(ngModel)]="planType" (ionChange)="segmentChanged()">
         <ion-segment-button value="0">
           asis
         </ion-segment-button>
