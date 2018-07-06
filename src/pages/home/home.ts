@@ -6,6 +6,7 @@ import {BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocatio
 import { LumeHttpProvider } from "../../providers/lume-http/lume-http";
 
 import { CityPage } from "../city/city";
+import {Device} from "@ionic-native/device";
 
 @Component({
   selector: 'page-home',
@@ -20,6 +21,7 @@ export class HomePage {
     public navCtrl: NavController,
     public backgroundGeolocation: BackgroundGeolocation,
     public changeDetectorRef: ChangeDetectorRef,
+    public device: Device,
     public  lumeHttp: LumeHttpProvider
   ) {
     this.lumeHttp.getCities().subscribe((value: Array<any>) => {
@@ -38,6 +40,30 @@ export class HomePage {
     };
     this.cities = this.allCitiesSortedFromPosition(bologna);
 
+    if ((this.device.platform === "Android" && this.device.version.indexOf("8.") === -1) || this.device.platform === "iOS") {
+      this.initializeBackgroundGeolocation();
+    }
+  }
+
+  allCitiesSortedFromPosition (position: ILatLng) {
+    return this.allCities.sort((a, b) => {
+
+      const lata = (a.lonLatBBox[1]+a.lonLatBBox[3]) / 2;
+      const lnga = (a.lonLatBBox[0]+a.lonLatBBox[2]) / 2;
+
+      const latb = (b.lonLatBBox[1]+b.lonLatBBox[3]) / 2;
+      const lngb = (b.lonLatBBox[0]+b.lonLatBBox[2]) / 2;
+
+      const da = Spherical.computeDistanceBetween(position, {lat: lata, lng: lnga});
+      const db = Spherical.computeDistanceBetween(position, {lat: latb, lng: lngb});
+
+      if (da < db) return -1;
+      if (da > db) return 1;
+      return 0;
+    });
+  }
+
+  initializeBackgroundGeolocation () {
     const config: BackgroundGeolocationConfig = {
       desiredAccuracy: 100,
       stationaryRadius: 200,
@@ -68,24 +94,6 @@ export class HomePage {
       });
 
     this.backgroundGeolocation.start();
-  }
-
-  allCitiesSortedFromPosition (position: ILatLng) {
-    return this.allCities.sort((a, b) => {
-
-      const lata = (a.lonLatBBox[1]+a.lonLatBBox[3]) / 2;
-      const lnga = (a.lonLatBBox[0]+a.lonLatBBox[2]) / 2;
-
-      const latb = (b.lonLatBBox[1]+b.lonLatBBox[3]) / 2;
-      const lngb = (b.lonLatBBox[0]+b.lonLatBBox[2]) / 2;
-
-      const da = Spherical.computeDistanceBetween(position, {lat: lata, lng: lnga});
-      const db = Spherical.computeDistanceBetween(position, {lat: latb, lng: lngb});
-
-      if (da < db) return -1;
-      if (da > db) return 1;
-      return 0;
-    });
   }
 
   getFilteredCities (ev: any) {
