@@ -10,7 +10,7 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content no-bounce>
   <div id="map_canvas">
   </div>
   <div id="activityDetail">
@@ -20,7 +20,9 @@
     <div class="label">{{(selectedActivity) ? selectedActivity.display_name : "Seleziona un'attività"}}</div>
     <div class="buttonsBox">
       <div class="info" (click)="infoPressed()">Info</div>
-      <div class="vai" (click)="vaiPressed()">Vai</div>
+      <a href="https://www.google.com/maps/dir/?api=1&" target="_system">
+        <div class="vai">Vai</div>
+      </a>
     </div>
   </div>
 </ion-content>

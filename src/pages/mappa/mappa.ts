@@ -16,6 +16,7 @@ export class MappaPage {
 
   city: any;
   selectedActivity: any;
+  directionsUrl = "";
 
   constructor(
     public navCtrl: NavController,
@@ -98,6 +99,7 @@ export class MappaPage {
       }).then((markerCluster: MarkerCluster) => {
         markerCluster.on(GoogleMapsEvent.MARKER_CLICK).subscribe((params) => {
           this.selectedActivity = params[1].get("activity");
+          this.directionsUrl = "https://www.google.com/maps/dir/?api=1&destination=" + this.selectedActivity.geometry.coordinates[1] + "," + this.selectedActivity.geometry.coordinates[0];
           this.changeDetectorRef.detectChanges();
         });
       });
@@ -109,13 +111,6 @@ export class MappaPage {
   infoPressed () {
     if (this.selectedActivity) {
       this.navCtrl.push(ActivityPage, this.selectedActivity);
-    }
-  }
-
-  vaiPressed () {
-    if (this.selectedActivity) {
-      const url = "https://www.google.com/maps/dir/?api=1&destination=" + this.selectedActivity.geometry.coordinates[1] + "," + this.selectedActivity.geometry.coordinates[0];
-      window.open(url, "_system");
     }
   }
 
