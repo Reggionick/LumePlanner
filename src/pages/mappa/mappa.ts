@@ -104,7 +104,7 @@ export class MappaPage {
         });
       });
     }, error => {
-      console.error(error);
+      console.error(JSON.stringify(error));
     })
   }
 

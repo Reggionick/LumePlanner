@@ -26,7 +26,7 @@ export class HomePage {
       this.allCities = value;
       this.initializeItems();
     }, error => {
-      console.error(error);
+      console.error(JSON.stringify(error));
     })
   }
 
