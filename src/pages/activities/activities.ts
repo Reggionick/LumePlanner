@@ -54,6 +54,9 @@ export class ActivitiesPage {
           for (const activityIds of Object.keys(this.favourites)) {
             this.allActivities.push(this.favourites[activityIds]);
           }
+        } else if (this.filter === "celiachia") {
+          this.allActivities = value.filter(
+            activity => activity.type === this.filter);
         } else {
           this.allActivities = value.filter(
             activity => activity.category === this.filter);

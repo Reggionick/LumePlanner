@@ -43,7 +43,7 @@ export class CityPage {
       case "cosedavedere":
       case "preferiti":
       case "itinerariaccessibili":
-      case "glutenfree":
+      case "celiachia":
       case "resting":
       case "eating":
       case "fashion":
