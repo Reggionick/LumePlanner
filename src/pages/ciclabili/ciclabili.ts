@@ -11,6 +11,7 @@ import {CiclabileDetailPage} from "../ciclabile-detail/ciclabile-detail";
 export class CiclabiliPage {
 
   city: any;
+  type: any;
   itineraries = [];
 
   constructor(
@@ -19,9 +20,10 @@ export class CiclabiliPage {
     public lumeHttp: LumeHttpProvider
   ) {
 
-    this.city = this.navParams.data;
+    this.city = this.navParams.data.city;
+    this.type = this.navParams.data.type;
 
-    this.lumeHttp.getGpxItineraries(this.city.name).subscribe((value: Array<any>) => {
+    this.lumeHttp.getGpxItineraries(this.city.name, this.type).subscribe((value: Array<any>) => {
       this.itineraries = value;
     })
   }
@@ -33,7 +35,8 @@ export class CiclabiliPage {
   onCiclabileClick (itinerary) {
     this.navCtrl.push(CiclabileDetailPage, {
       itinerary: itinerary,
-      city: this.city
+      city: this.city,
+      type: this.type
     });
   }
 

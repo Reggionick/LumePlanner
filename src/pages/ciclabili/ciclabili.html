@@ -2,7 +2,8 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ 'ciclabili' | translate }}</ion-title>
+    <ion-title *ngIf="type == 'itineraries'">{{ 'ciclabili' | translate }}</ion-title>
+    <ion-title *ngIf="type == 'itineraries_disabili'">{{ 'itinerariaccessibili' | translate }}</ion-title>
   </ion-navbar>
 
 </ion-header>

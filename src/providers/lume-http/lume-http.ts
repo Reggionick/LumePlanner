@@ -30,8 +30,8 @@ export class LumeHttpProvider {
     return this.http.get(this.ditaServer + "itineraries?" + reqParams);
   }
 
-  getGpxItineraries(city: any) {
-    return this.http.get(this.ditaServerFiles + "gpx_itineraries/" + city + "/itineraries.json");
+  getGpxItineraries(city: any, type: any) {
+    return this.http.get(this.ditaServerFiles + "gpx_itineraries/" + city + "/" + type + ".json");
   }
 
   getGpxFile(city: any, fileName: string) {

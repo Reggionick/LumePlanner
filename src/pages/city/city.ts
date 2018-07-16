@@ -37,12 +37,21 @@ export class CityPage {
         break;
 
       case "ciclabili":
-        this.navCtrl.push(CiclabiliPage, this.city);
+        this.navCtrl.push(CiclabiliPage, {
+          city: this.city,
+          type: "itineraries"
+        });
+        break;
+
+      case "itinerariaccessibili":
+        this.navCtrl.push(CiclabiliPage, {
+          city: this.city,
+          type: "itineraries_disabili"
+        });
         break;
 
       case "cosedavedere":
       case "preferiti":
-      case "itinerariaccessibili":
       case "celiachia":
       case "resting":
       case "eating":
