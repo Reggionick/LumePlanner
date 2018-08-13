@@ -79,7 +79,7 @@ export class ItineraryBusPage {
         const classS = lines[i].indexOf("<img src=\"\" class=\"")+"<img src=\"\" class=\"".length;
         const classE = lines[i].indexOf("\"",classS);
         const mezzo =  lines[i].substring(classS,classE);
-        lines[i] = lines[i].replace("<img src=\"\"","<img src=\"assets/imgs/travelplanner/mezzi/"+mezzo+".png\"")
+        lines[i] = lines[i].replace("<img src=\"\"","<img src=\"assets/travelplanner/mezzi/"+mezzo+".png\"")
       }
 
       if(lines[i].indexOf("<img src=\"#\" class") != -1) {
@@ -87,7 +87,11 @@ export class ItineraryBusPage {
         const classE = lines[i].indexOf("\"",classS);
         const mezzo =  lines[i].substring(classS,classE);
 
-        lines[i] = lines[i].replace("<img src=\"#\"","<img src=\"assets/imgs/travelplanner/mezzi/"+mezzo+".png\"")
+        lines[i] = lines[i].replace("<img src=\"#\"","<img src=\"assets/travelplanner/mezzi/"+mezzo+".png\"")
+      }
+
+      if(lines[i].indexOf("<img src=\"img/travelplanner") != -1) {
+        lines[i] = lines[i].replace("<img src=\"img/travelplanner","<img src=\"assets/travelplanner")
       }
 
       lines[i] = lines[i].replace(new RegExp("onmouseover", 'g'), "onclick")
