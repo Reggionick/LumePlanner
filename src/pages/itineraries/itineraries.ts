@@ -35,7 +35,7 @@ export class ItinerariesPage {
       this.lumeHttp.getItineraries(this.city.name, lastPosition).subscribe((value: Array<any>) => {
         this.itineraries = value.map(itin => {
           const approx_time = itin.approx_time.split(" ", 2)[0];
-          itin.approx_time = moment.duration(parseInt(approx_time) * 1000).locale("it").humanize();
+          itin.approx_time = moment.duration(parseInt(approx_time) * 60 * 1000).locale("it").humanize();
           return itin;
         });
       })
